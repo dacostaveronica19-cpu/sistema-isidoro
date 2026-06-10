@@ -23,17 +23,36 @@
 
     <!-- Barra de Navegação Superior -->
     <header class="bg-white border-b border-black/10 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <a href="https://academiaisidoro.wordpress.com/" class="font-serif text-2xl font-bold tracking-tight text-[#34322d]">
-                Sistema <span class="text-sage">Isidoro</span>
-            </a>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="https://academiaisidoro.wordpress.com/" class="text-[#5e5e5b] hover:text-sage transition-colors">Início</a>
-                <a href="#recursos-especiais" class="text-[#5e5e5b] hover:text-sage transition-colors">Recursos Especiais</a>
-                <a href="#planos-de-aula" class="text-[#5e5e5b] hover:text-sage transition-colors">Planos de Aula</a>
-                <a href="#downloads-gratuitos" class="text-[#5e5e5b] hover:text-sage transition-colors">Materiais Gratuitos</a>
-            </nav>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="h-16 flex items-center justify-between">
+                <a href="https://academiaisidoro.wordpress.com/" class="font-serif text-2xl font-bold tracking-tight text-[#34322d]">
+                    Sistema <span class="text-sage">Isidoro</span>
+                </a>
+                
+                <!-- Botão do Menu Mobile (Visível apenas em telas pequenas) -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-[#5e5e5b] hover:text-sage focus:outline-none" aria-label="Abrir menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Menu Desktop (Oculto em telas pequenas) -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="https://academiaisidoro.wordpress.com/" class="text-[#5e5e5b] hover:text-sage transition-colors">Início</a>
+                    <a href="#recursos-especiais" class="text-[#5e5e5b] hover:text-sage transition-colors">Recursos Especiais</a>
+                    <a href="#planos-de-aula" class="text-[#5e5e5b] hover:text-sage transition-colors">Planos de Aula</a>
+                    <a href="#downloads-gratuitos" class="text-[#5e5e5b] hover:text-sage transition-colors">Materiais Gratuitos</a>
+                </nav>
+            </div>
         </div>
+
+        <!-- Menu Mobile (Injetado verticalmente, oculto por padrão) -->
+        <nav id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-[#fafafa] px-4 pt-2 pb-4 space-y-3 text-sm font-medium shadow-inner">
+            <a href="https://academiaisidoro.wordpress.com/" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors">Início</a>
+            <a href="#recursos-especiais" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Recursos Especiais</a>
+            <a href="#planos-de-aula" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Planos de Aula</a>
+            <a href="#downloads-gratuitos" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Materiais Gratuitos</a>
+        </nav>
     </header>
 
     <!-- Conteúdo Principal -->
@@ -95,17 +114,33 @@
         </div>
     </footer>
 
-    <!-- Lógica de Integração com a API do WordPress -->
+    <!-- Lógica de Integração com a API do WordPress e Controle de Menu -->
     <script>
         const CONFIG = {
             siteUrl: 'academiaisidoro.wordpress.com',
             categories: {
                 recursos: 'loja-recursos-especiais',
                 planos: 'planos-de-aula',
-                downloads: 'materiais-didaticos' // Corrigido para corresponder à categoria real
+                downloads: 'materiais-didaticos'
             }
         };
 
+        // Lógica de Controle do Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Ícone Hambúrguer
+            } else {
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // Ícone Fechar "X"
+            }
+        }
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Funções de tratamento e processamento da API
         function cleanText(html, limit = 160) {
             const doc = new DOMParser().parseFromString(html, 'text/html');
             const text = doc.body.textContent || "";
