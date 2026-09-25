@@ -26,34 +26,68 @@ body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 <a href="https://academiaisidoro.wordpress.com/" class="font-serif text-2xl font-bold tracking-tight text-[#34322d]">
 Sistema <span class="text-sage">Isidoro</span>
 </a>
+
 <!-- Botão do Menu Mobile (Visível apenas em telas pequenas) -->
 <button id="mobile-menu-btn" class="md:hidden p-2 text-[#5e5e5b] hover:text-sage focus:outline-none" aria-label="Abrir menu">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
 </svg>
 </button>
+
 <!-- Menu Desktop (Oculto em telas pequenas) -->
 <nav class="hidden md:flex space-x-8 text-sm font-medium">
 <a href="https://academiaisidoro.wordpress.com/" class="text-[#5e5e5b] hover:text-sage transition-colors">Blog</a>
+<a href="#recursos-digitais" class="text-[#5e5e5b] hover:text-sage transition-colors">Recursos Digitais</a>
 <a href="#recursos-especiais" class="text-[#5e5e5b] hover:text-sage transition-colors">Recursos Especiais</a>
 <a href="#planos-de-aula" class="text-[#5e5e5b] hover:text-sage transition-colors">Planos de Aula</a>
 <a href="#downloads-gratuitos" class="text-[#5e5e5b] hover:text-sage transition-colors">Materiais Gratuitos</a>
-<a href="#inteligencia-artificial" class="text-[#5e5e5b] hover:text-sage transition-colors">Inteligência Artificial</a>
 </nav>
 </div>
 </div>
+
 <!-- Menu Mobile (Injetado verticalmente, oculto por padrão) -->
 <nav id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-[#fafafa] px-4 pt-2 pb-4 space-y-3 text-sm font-medium shadow-inner">
 <a href="https://academiaisidoro.wordpress.com/" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors">Blog</a>
+<a href="#recursos-digitais" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Recursos Digitais</a>
 <a href="#recursos-especiais" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Recursos Especiais</a>
 <a href="#planos-de-aula" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Planos de Aula</a>
 <a href="#downloads-gratuitos" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Materiais Gratuitos</a>
-<a href="#inteligencia-artificial" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Inteligência Artificial</a>
 </nav>
 </header>
 
 <!-- Conteúdo Principal -->
 <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+<!-- SEÇÃO: RECURSOS DIGITAIS DIDÁTICOS (JOGOS E FERRAMENTAS INTERATIVAS) -->
+<section id="recursos-digitais" class="scroll-mt-20">
+<div class="mb-8 border-b border-black/10 pb-6">
+<span class="text-xs font-semibold uppercase tracking-wider text-sage">Aprender Investigando</span>
+<h1 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Recursos Digitais Didáticos</h1>
+<p class="mt-2 text-sm text-[#5e5e5b] max-w-2xl leading-relaxed">
+Jogos e ferramentas interativas que colocam o aluno no papel de quem investiga, em vez de apenas ler sobre o resultado da investigação.
+</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
+<div class="p-6">
+<span class="text-xs font-semibold text-sage uppercase tracking-wider">Jogo investigativo · História</span>
+<h2 class="text-xl font-bold font-serif mt-2 text-[#34322d] leading-snug">O Enigma do Homem de Gelo</h2>
+<p class="text-sm text-[#5e5e5b] mt-3 leading-relaxed">
+O aluno assume o papel de pesquisador no caso real de Ötzi, a múmia de gelo dos Alpes: escava a geleira, analisa evidências em laboratório, data amostras por carbono-14, publica artigos científicos e enfrenta os pareceres da comunidade acadêmica. O jogo reproduz o próprio método de investigação histórico-científico — hipótese, teste, revisão pelos pares, correção de rota — e não apenas o conteúdo sobre o achado arqueológico.
+</p>
+<p class="text-xs text-[#858481] mt-3">
+<strong>Indicado para:</strong> turmas com repertório prévio em leitura e raciocínio investigativo. Não recomendado como primeiro contato com jogos digitais.
+</p>
+</div>
+<div class="p-6 pt-0 mt-auto">
+<a href="https://dacostaveronica19-cpu.github.io/iceman-game/" target="_blank" class="w-full inline-flex justify-center items-center px-4 py-2.5 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">
+Jogar agora
+</a>
+</div>
+</div>
+</div>
+</section>
 
 <!-- SEÇÃO 1: LOJA DE RECURSOS ESPECIAIS (PAGOS) -->
 <section id="recursos-especiais" class="scroll-mt-20">
@@ -97,20 +131,6 @@ Kits de atividades prontas, exercícios adaptados e ferramentas pedagógicas de 
 </div>
 </section>
 
-<!-- SEÇÃO 4: INTELIGÊNCIA ARTIFICIAL (NOVIDADES E REFLEXÕES) -->
-<section id="inteligencia-artificial" class="scroll-mt-20">
-<div class="mb-8 border-b border-black/10 pb-6">
-<span class="text-xs font-semibold uppercase tracking-wider text-sage">Novidades e Reflexões</span>
-<h1 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Inteligência Artificial na Educação</h1>
-<p class="mt-2 text-sm text-[#5e5e5b] max-w-2xl leading-relaxed">
-Análises críticas e atualizações sobre o uso de Inteligência Artificial em sala de aula, publicadas diretamente do blog Academia Isidoro.
-</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="container-ia">
-<div class="col-span-full text-center py-12 text-sm text-[#858481]">Carregando publicações...</div>
-</div>
-</section>
-
 </main>
 
 <!-- Rodapé -->
@@ -132,8 +152,7 @@ siteUrl: 'academiaisidoro.wordpress.com',
 categories: {
 recursos: 'loja-recursos-especiais',
 planos: 'planos-de-aula',
-downloads: 'materiais-didaticos',
-ia: 'inteligencia-artificial'
+downloads: 'materiais-didaticos'
 }
 };
 
@@ -150,6 +169,7 @@ menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Ícone Hambúrguer
 menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // Ícone Fechar "X"
 }
 }
+
 mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
 // Funções de tratamento e processamento da API
@@ -174,6 +194,7 @@ const link = post.URL;
 const description = cleanText(post.excerpt || post.content);
 const image = post.featured_image || 'https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png';
 const tag = getPostTag(post.categories, 'Pedagógico');
+
 return `
 <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
 <div>
@@ -197,6 +218,7 @@ ${buttonText}
 
 async function loadPortalContent() {
 const apiEndpoint = `https://public-api.wordpress.com/rest/v1.1/sites/${CONFIG.siteUrl}/posts?number=100`;
+
 try {
 const response = await fetch(apiEndpoint);
 if (!response.ok) throw new Error('Falha ao conectar com a API.');
@@ -206,12 +228,10 @@ const posts = data.posts;
 const recursosContainer = document.getElementById('container-recursos');
 const planosContainer = document.getElementById('container-planos');
 const downloadsContainer = document.getElementById('container-downloads');
-const iaContainer = document.getElementById('container-ia');
 
 let htmlRecursos = '';
 let htmlPlanos = '';
 let htmlDownloads = '';
-let htmlIA = '';
 
 posts.forEach(post => {
 const postCats = Object.values(post.categories).map(c => c.slug);
@@ -225,15 +245,11 @@ htmlPlanos += createCardHTML(post, 'Acessar Plano de Aula');
 if (postCats.includes(CONFIG.categories.downloads)) {
 htmlDownloads += createCardHTML(post, 'Baixar Recurso');
 }
-if (postCats.includes(CONFIG.categories.ia)) {
-htmlIA += createCardHTML(post, 'Ler Publicação');
-}
 });
 
 recursosContainer.innerHTML = htmlRecursos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum recurso exclusivo disponível no momento.</div>';
 planosContainer.innerHTML = htmlPlanos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum plano de aula disponível no momento.</div>';
 downloadsContainer.innerHTML = htmlDownloads || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum material gratuito disponível no momento.</div>';
-iaContainer.innerHTML = htmlIA || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhuma publicação sobre Inteligência Artificial disponível no momento.</div>';
 
 } catch (error) {
 console.error(error);
@@ -241,7 +257,6 @@ const errorMessage = '<div class="col-span-full text-center py-12 text-sm text-r
 document.getElementById('container-recursos').innerHTML = errorMessage;
 document.getElementById('container-planos').innerHTML = errorMessage;
 document.getElementById('container-downloads').innerHTML = errorMessage;
-document.getElementById('container-ia').innerHTML = errorMessage;
 }
 }
 
