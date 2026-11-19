@@ -192,7 +192,7 @@ mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 function escapeHTML(value) {
 return String(value == null ? '' : value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
-function cleanText(html, limit = 160) {
+function decodeEntities(value) {\nconst doc = new DOMParser().parseFromString(String(value == null ? '' : value), 'text/html');\nreturn doc.body.textContent || '';\n}\nfunction cleanText(html, limit = 160) {
 const doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
 const text = (doc.body.textContent || '').replace(/\\s+/g, ' ').trim();
 return text.length > limit ? text.substring(0, limit) + '...' : text;
@@ -201,13 +201,13 @@ function getPostTag(postCategories, fallback) {
 const keys = Object.keys(postCategories || {});
 if (keys.length) {
 const activeKey = keys.find(k => !Object.values(CONFIG.categories).includes(postCategories[k].slug));
-return activeKey ? postCategories[activeKey].name : fallback;
+return activeKey ? decodeEntities(postCategories[activeKey].name) : fallback;
 }
 return fallback;
 }
 function articleHref(post) { return '#/artigo/' + encodeURIComponent(post.slug); }
 function createCardHTML(post, buttonText) {
-const title = post.title || 'Sem título';
+const title = decodeEntities(post.title || 'Sem título');
 const description = cleanText(post.excerpt || post.content);
 const image = post.featured_image || 'https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png';
 const tag = getPostTag(post.categories, 'Pedagógico');
@@ -320,7 +320,7 @@ const result = await response.json();
 if (requestId !== articleRequestId) return;
 const post = Array.isArray(result.posts) ? result.posts[0] : (result.posts || result);
 if (!post || !post.content) throw new Error('Este artigo não está disponível.');
-document.getElementById('article-title').textContent = post.title || 'Artigo';
+document.getElementById('article-title').textContent = decodeEntities(post.title || 'Artigo');
 document.getElementById('article-category').textContent = getPostTag(post.categories, 'Sistema Isidoro');
 const date = post.date ? new Date(post.date) : null;
 document.getElementById('article-date').textContent = date && !isNaN(date) ? date.toLocaleDateString('pt-BR', {year:'numeric',month:'long',day:'numeric'}) : '';
@@ -337,7 +337,7 @@ if (img.src) imageWrap.append(img);
 document.getElementById('article-body').innerHTML = sanitizeArticleHTML(post.content);
 status.classList.add('hidden');
 content.classList.remove('hidden');
-document.title = (post.title || 'Artigo') + ' | Sistema Isidoro';
+document.title = decodeEntities(post.title || 'Artigo') + ' | Sistema Isidoro';
 } catch (error) {
 if (requestId !== articleRequestId) return;
 status.textContent = error.message || 'Não foi possível carregar o artigo. Verifique sua conexão e tente novamente.';
