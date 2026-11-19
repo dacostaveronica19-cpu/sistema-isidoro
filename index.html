@@ -192,7 +192,11 @@ mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 function escapeHTML(value) {
 return String(value == null ? '' : value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
-function decodeEntities(value) {\nconst doc = new DOMParser().parseFromString(String(value == null ? '' : value), 'text/html');\nreturn doc.body.textContent || '';\n}\nfunction cleanText(html, limit = 160) {
+function decodeEntities(value) {
+const doc = new DOMParser().parseFromString(String(value == null ? '' : value), 'text/html');
+return doc.body.textContent || '';
+}
+function cleanText(html, limit = 160) {
 const doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
 const text = (doc.body.textContent || '').replace(/\\s+/g, ' ').trim();
 return text.length > limit ? text.substring(0, limit) + '...' : text;
