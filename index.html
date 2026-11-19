@@ -56,7 +56,7 @@ Sistema <span class="text-sage">Isidoro</span>
 </header>
 
 <!-- Conteúdo Principal -->
-<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+<main id="portal-main" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
 
 <!-- SEÇÃO: RECURSOS DIGITAIS DIDÁTICOS (JOGOS E FERRAMENTAS INTERATIVAS) -->
 <section id="recursos-digitais" class="scroll-mt-20">
@@ -133,6 +133,22 @@ Kits de atividades prontas, exercícios adaptados e ferramentas pedagógicas de 
 
 </main>
 
+<main id="article-view" class="flex-grow w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 hidden" aria-live="polite">
+<div class="max-w-3xl mx-auto">
+<a href="#portal" class="inline-flex items-center gap-2 text-sm font-medium text-sage hover:underline mb-8">← Voltar ao portal</a>
+<div id="article-status" class="text-center py-16 text-[#5e5e5b]" role="status">Carregando artigo...</div>
+<article id="article-content" class="hidden">
+<header class="mb-8 border-b border-black/10 pb-6">
+<p id="article-category" class="text-xs font-semibold uppercase tracking-wider text-sage mb-3"></p>
+<h1 id="article-title" class="text-4xl sm:text-5xl font-bold font-serif leading-tight text-[#34322d]"></h1>
+<p id="article-date" class="mt-4 text-sm text-[#858481]"></p>
+</header>
+<div id="article-featured-image" class="mb-8"></div>
+<div id="article-body" class="article-prose text-base leading-8 text-[#34322d]"></div>
+</article>
+</div>
+</main>
+
 <!-- Rodapé -->
 <footer class="bg-white border-t border-black/10 py-8 mt-12">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
@@ -149,118 +165,180 @@ Kits de atividades prontas, exercícios adaptados e ferramentas pedagógicas de 
 <script>
 const CONFIG = {
 siteUrl: 'academiaisidoro.wordpress.com',
-categories: {
-recursos: 'loja-recursos-especiais',
-planos: 'planos-de-aula',
-downloads: 'materiais-didaticos'
-}
+apiBase: 'https://public-api.wordpress.com/rest/v1.1/sites/academiaisidoro.wordpress.com',
+categories: { recursos: 'loja-recursos-especiais', planos: 'planos-de-aula', downloads: 'materiais-didaticos' }
 };
-
-// Lógica de Controle do Menu Mobile
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const menuIcon = document.getElementById('menu-icon');
-
 function toggleMobileMenu() {
 mobileMenu.classList.toggle('hidden');
-if (mobileMenu.classList.contains('hidden')) {
-menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Ícone Hambúrguer
-} else {
-menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // Ícone Fechar "X"
+menuIcon.setAttribute('d', mobileMenu.classList.contains('hidden') ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
 }
-}
-
 mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-// Funções de tratamento e processamento da API
+function escapeHTML(value) {
+return String(value == null ? '' : value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
 function cleanText(html, limit = 160) {
-const doc = new DOMParser().parseFromString(html, 'text/html');
-const text = doc.body.textContent || "";
+const doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
+const text = (doc.body.textContent || '').replace(/\\s+/g, ' ').trim();
 return text.length > limit ? text.substring(0, limit) + '...' : text;
 }
-
 function getPostTag(postCategories, fallback) {
-const keys = Object.keys(postCategories);
-if (keys.length > 0) {
+const keys = Object.keys(postCategories || {});
+if (keys.length) {
 const activeKey = keys.find(k => !Object.values(CONFIG.categories).includes(postCategories[k].slug));
 return activeKey ? postCategories[activeKey].name : fallback;
 }
 return fallback;
 }
-
+function articleHref(post) { return '#/artigo/' + encodeURIComponent(post.slug); }
 function createCardHTML(post, buttonText) {
-const title = post.title;
-const link = post.URL;
+const title = post.title || 'Sem título';
 const description = cleanText(post.excerpt || post.content);
 const image = post.featured_image || 'https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png';
 const tag = getPostTag(post.categories, 'Pedagógico');
-
 return `
 <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
-<div>
-<div class="h-48 w-full bg-gray-100 relative">
-<img src="${image}" alt="${title}" class="w-full h-full object-cover" onerror="this.src='https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png';">
-</div>
-<div class="p-6">
-<span class="text-xs font-semibold text-sage uppercase tracking-wider">${tag}</span>
-<h2 class="text-xl font-bold font-serif mt-2 text-[#34322d] leading-snug">${title}</h2>
-<p class="text-sm text-[#5e5e5b] mt-3 line-clamp-3">${description}</p>
-</div>
-</div>
-<div class="p-6 pt-0 mt-auto">
-<a href="${link}" target="_blank" class="w-full inline-flex justify-center items-center px-4 py-2.5 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">
-${buttonText}
-</a>
-</div>
-</div>
-`;
+<div><div class="h-48 w-full bg-gray-100 relative"><img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png';"></div>
+<div class="p-6"><span class="text-xs font-semibold text-sage uppercase tracking-wider">${escapeHTML(tag)}</span><h2 class="text-xl font-bold font-serif mt-2 text-[#34322d] leading-snug">${escapeHTML(title)}</h2>
+<p class="text-sm text-[#5e5e5b] mt-3 line-clamp-3">${escapeHTML(description)}</p></div></div>
+<div class="p-6 pt-0 mt-auto"><a href="${articleHref(post)}" class="w-full inline-flex justify-center items-center px-4 py-2.5 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">${escapeHTML(buttonText)}</a></div>
+</div>`;
 }
-
 async function loadPortalContent() {
-const apiEndpoint = `https://public-api.wordpress.com/rest/v1.1/sites/${CONFIG.siteUrl}/posts?number=100`;
-
+const apiEndpoint = CONFIG.apiBase + '/posts?number=100';
 try {
 const response = await fetch(apiEndpoint);
 if (!response.ok) throw new Error('Falha ao conectar com a API.');
 const data = await response.json();
-const posts = data.posts;
-
-const recursosContainer = document.getElementById('container-recursos');
-const planosContainer = document.getElementById('container-planos');
-const downloadsContainer = document.getElementById('container-downloads');
-
-let htmlRecursos = '';
-let htmlPlanos = '';
-let htmlDownloads = '';
-
+const posts = data.posts || [];
+const containers = {
+recursos: document.getElementById('container-recursos'),
+planos: document.getElementById('container-planos'),
+downloads: document.getElementById('container-downloads')
+};
+const html = { recursos: '', planos: '', downloads: '' };
 posts.forEach(post => {
-const postCats = Object.values(post.categories).map(c => c.slug);
-
-if (postCats.includes(CONFIG.categories.recursos)) {
-htmlRecursos += createCardHTML(post, 'Leitura Completa');
-}
-if (postCats.includes(CONFIG.categories.planos)) {
-htmlPlanos += createCardHTML(post, 'Acessar Plano de Aula');
-}
-if (postCats.includes(CONFIG.categories.downloads)) {
-htmlDownloads += createCardHTML(post, 'Baixar Recurso');
-}
+const postCats = Object.values(post.categories || {}).map(c => c.slug);
+if (postCats.includes(CONFIG.categories.recursos)) html.recursos += createCardHTML(post, 'Leitura Completa');
+if (postCats.includes(CONFIG.categories.planos)) html.planos += createCardHTML(post, 'Acessar Plano de Aula');
+if (postCats.includes(CONFIG.categories.downloads)) html.downloads += createCardHTML(post, 'Baixar Recurso');
 });
-
-recursosContainer.innerHTML = htmlRecursos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum recurso exclusivo disponível no momento.</div>';
-planosContainer.innerHTML = htmlPlanos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum plano de aula disponível no momento.</div>';
-downloadsContainer.innerHTML = htmlDownloads || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum material gratuito disponível no momento.</div>';
-
+containers.recursos.innerHTML = html.recursos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum recurso exclusivo disponível no momento.</div>';
+containers.planos.innerHTML = html.planos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum plano de aula disponível no momento.</div>';
+containers.downloads.innerHTML = html.downloads || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum material gratuito disponível no momento.</div>';
 } catch (error) {
 console.error(error);
-const errorMessage = '<div class="col-span-full text-center py-12 text-sm text-red-600">Erro ao carregar os conteúdos. Verifique a conexão com o blog.</div>';
-document.getElementById('container-recursos').innerHTML = errorMessage;
-document.getElementById('container-planos').innerHTML = errorMessage;
-document.getElementById('container-downloads').innerHTML = errorMessage;
+const errorMessage = '<div class="col-span-full text-center py-12 text-sm text-red-600">Erro ao carregar os conteúdos. Verifique a conexão com o WordPress.</div>';
+['container-recursos','container-planos','container-downloads'].forEach(id => document.getElementById(id).innerHTML = errorMessage);
 }
 }
-
-document.addEventListener('DOMContentLoaded', loadPortalContent);
+const allowedTags = new Set(['P','BR','HR','H2','H3','H4','UL','OL','LI','BLOCKQUOTE','STRONG','B','EM','I','U','S','DEL','A','IMG','FIGURE','FIGCAPTION','DIV','SPAN','TABLE','THEAD','TBODY','TR','TH','TD','PRE','CODE','SUP','SUB']);
+const globalAttrs = new Set(['class','title','lang','dir']);
+function safeUrl(value, image = false) {
+try {
+const url = new URL(value, location.href);
+if (url.protocol !== 'https:' && url.protocol !== 'http:') return '';
+if (image && url.protocol !== 'https:') return '';
+return url.href;
+} catch (_) { return ''; }
+}
+function sanitizeArticleHTML(html) {
+const source = new DOMParser().parseFromString(String(html || ''), 'text/html');
+function copyNode(node) {
+if (node.nodeType === Node.TEXT_NODE) return document.createTextNode(node.nodeValue);
+if (node.nodeType !== Node.ELEMENT_NODE) return document.createDocumentFragment();
+const tag = node.tagName;
+if (['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','FORM','INPUT','BUTTON','SVG','MATH'].includes(tag)) return document.createDocumentFragment();
+if (!allowedTags.has(tag)) {
+const fragment = document.createDocumentFragment();
+node.childNodes.forEach(child => fragment.append(copyNode(child)));
+return fragment;
+}
+const clean = document.createElement(tag.toLowerCase());
+Array.from(node.attributes).forEach(attr => {
+const name = attr.name.toLowerCase();
+if (name.startsWith('on') || name === 'style' || name === 'srcdoc') return;
+if (globalAttrs.has(name) && !name.startsWith('on')) clean.setAttribute(name, attr.value);
+if (tag === 'A' && name === 'href') {
+const href = safeUrl(attr.value);
+if (href) { clean.setAttribute('href', href); clean.setAttribute('target', '_blank'); clean.setAttribute('rel', 'noopener noreferrer'); }
+}
+if (tag === 'IMG' && name === 'src') {
+const src = safeUrl(attr.value, true);
+if (src) { clean.setAttribute('src', src); clean.setAttribute('loading', 'lazy'); clean.setAttribute('referrerpolicy', 'no-referrer'); }
+}
+if (tag === 'IMG' && ['alt','width','height'].includes(name)) clean.setAttribute(name, attr.value);
+if (tag === 'TH' && ['colspan','rowspan'].includes(name)) clean.setAttribute(name, attr.value);
+});
+node.childNodes.forEach(child => clean.append(copyNode(child)));
+return clean;
+}
+const result = document.createDocumentFragment();
+source.body.childNodes.forEach(node => result.append(copyNode(node)));
+const wrapper = document.createElement('div');
+wrapper.append(result);
+return wrapper.innerHTML;
+}
+function showPortal() {
+document.getElementById('portal-main').classList.remove('hidden');
+document.getElementById('article-view').classList.add('hidden');
+document.title = 'Sistema Isidoro - Portal Educacional';
+}
+async function showArticle(slug) {
+document.getElementById('portal-main').classList.add('hidden');
+const view = document.getElementById('article-view');
+const status = document.getElementById('article-status');
+const content = document.getElementById('article-content');
+view.classList.remove('hidden');
+content.classList.add('hidden');
+status.classList.remove('hidden');
+status.textContent = 'Carregando artigo...';
+window.scrollTo(0, 0);
+try {
+const endpoint = CONFIG.apiBase + '/posts/slug:' + encodeURIComponent(slug);
+const response = await fetch(endpoint);
+if (!response.ok) throw new Error('Artigo não encontrado.');
+const result = await response.json();
+const post = Array.isArray(result.posts) ? result.posts[0] : (result.posts || result);
+if (!post || !post.content) throw new Error('Este artigo não está disponível.');
+document.getElementById('article-title').textContent = post.title || 'Artigo';
+document.getElementById('article-category').textContent = getPostTag(post.categories, 'Sistema Isidoro');
+const date = post.date ? new Date(post.date) : null;
+document.getElementById('article-date').textContent = date && !isNaN(date) ? date.toLocaleDateString('pt-BR', {year:'numeric',month:'long',day:'numeric'}) : '';
+const imageWrap = document.getElementById('article-featured-image');
+imageWrap.replaceChildren();
+if (post.featured_image) {
+const img = document.createElement('img');
+img.src = safeUrl(post.featured_image, true);
+img.alt = '';
+img.loading = 'lazy';
+img.className = 'w-full max-h-[32rem] object-cover rounded-xl';
+if (img.src) imageWrap.append(img);
+}
+document.getElementById('article-body').innerHTML = sanitizeArticleHTML(post.content);
+status.classList.add('hidden');
+content.classList.remove('hidden');
+document.title = (post.title || 'Artigo') + ' | Sistema Isidoro';
+} catch (error) {
+status.textContent = error.message || 'Não foi possível carregar o artigo. Verifique sua conexão e tente novamente.';
+status.classList.remove('hidden');
+}
+}
+function routeFromHash() {
+const match = location.hash.match(/^#\/artigo\/([^/?#]+)/);
+if (!match) { showPortal(); return; }
+let slug;
+try { slug = decodeURIComponent(match[1]); } catch (_) { showPortal(); return; }
+if (slug) showArticle(slug);
+}
+document.addEventListener('click', event => {
+const link = event.target.closest('#article-view a[href^="#portal"]');
+if (link) { showPortal(); if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMobileMenu(); }
+});
+window.addEventListener('hashchange', routeFromHash);
+document.addEventListener('DOMContentLoaded', () => { loadPortalContent(); routeFromHash(); });
 </script>
 </body>
 </html>
