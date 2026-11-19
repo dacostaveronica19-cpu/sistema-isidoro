@@ -294,12 +294,15 @@ const wrapper = document.createElement('div');
 wrapper.append(result);
 return wrapper.innerHTML;
 }
+let articleRequestId = 0;
 function showPortal() {
+articleRequestId++;
 document.getElementById('portal-main').classList.remove('hidden');
 document.getElementById('article-view').classList.add('hidden');
 document.title = 'Sistema Isidoro - Portal Educacional';
 }
 async function showArticle(slug) {
+const requestId = ++articleRequestId;
 document.getElementById('portal-main').classList.add('hidden');
 const view = document.getElementById('article-view');
 const status = document.getElementById('article-status');
@@ -314,6 +317,7 @@ const endpoint = CONFIG.apiBase + '/posts/slug:' + encodeURIComponent(slug);
 const response = await fetch(endpoint);
 if (!response.ok) throw new Error('Artigo não encontrado.');
 const result = await response.json();
+if (requestId !== articleRequestId) return;
 const post = Array.isArray(result.posts) ? result.posts[0] : (result.posts || result);
 if (!post || !post.content) throw new Error('Este artigo não está disponível.');
 document.getElementById('article-title').textContent = post.title || 'Artigo';
@@ -335,6 +339,7 @@ status.classList.add('hidden');
 content.classList.remove('hidden');
 document.title = (post.title || 'Artigo') + ' | Sistema Isidoro';
 } catch (error) {
+if (requestId !== articleRequestId) return;
 status.textContent = error.message || 'Não foi possível carregar o artigo. Verifique sua conexão e tente novamente.';
 status.classList.remove('hidden');
 }
