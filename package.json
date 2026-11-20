@@ -1,0 +1,14 @@
+{
+  "name": "sistema-isidoro",
+  "private": true,
+  "type": "module",
+  "description": "Gera as páginas estáticas dos materiais a partir dos posts do blog Academia Isidoro.",
+  "scripts": {
+    "build:materiais": "node scripts/build-materiais.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "he": "^1.2.0",
+    "sanitize-html": "^2.13.0"
+  }
+}

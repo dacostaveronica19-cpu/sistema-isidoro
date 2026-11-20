@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Página não encontrada | Sistema Isidoro</title>
+<script>
+// Material publicado há pouco no blog e ainda sem página própria: abre pela leitura do portal.
+(function () {
+  var m = location.pathname.match(/^\/materiais\/([^\/]+)\/?$/);
+  if (m) location.replace('/#/artigo/' + m[1]);
+})();
+</script>
+<style>
+body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f8f8f7; color: #34322d; font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; text-align: center; padding: 1.5rem; }
+h1 { font-family: Georgia, 'Crimson Text', serif; font-size: 2.25rem; margin: 0 0 .5rem; }
+p { margin: 0 0 1.5rem; color: #5e5e5b; }
+a { display: inline-block; padding: .75rem 1.5rem; background: #5a7c6f; color: #fff; border-radius: .5rem; text-decoration: none; font-size: .875rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<main>
+<h1>Página não encontrada</h1>
+<p>O endereço pode ter mudado ou o material ainda não foi publicado.</p>
+<a href="/">Voltar ao portal</a>
+</main>
+</body>
+</html>
