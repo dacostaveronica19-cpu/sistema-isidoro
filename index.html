@@ -133,6 +133,11 @@ Sistema <span class="text-sage">Isidoro</span>
 <span class="block mt-2 text-xs font-medium text-sage" data-count="recursos"></span>
 </a>
 </nav>
+<div id="explorar" class="mt-8 hidden" hidden>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-[#6b6a66]">Explorar os materiais</h2>
+<div id="explorar-grupos" class="mt-4 space-y-5"></div>
+<p class="mt-5"><a href="/materiais/" class="text-sm font-medium text-sage hover:underline">Ver todos os materiais, com filtros combinados →</a></p>
+</div>
 </section>
 
 <section id="recursos-digitais" class="scroll-mt-20">
@@ -496,7 +501,18 @@ const link = event.target.closest('#article-view a[href^="#portal"]');
 if (link) { showPortal(); if (mobileMenu && !mobileMenu.classList.contains('hidden')) toggleMobileMenu(); }
 });
 window.addEventListener('hashchange', routeFromHash);
-document.addEventListener('DOMContentLoaded', () => { loadPortalContent(); routeFromHash(); });
+async function loadExplorar() {
+try {
+const response = await fetch('/materiais.json');
+if (!response.ok) return;
+const data = await response.json();
+const grupos = (data.grupos || []).filter(g => g.id === 'etapa' || g.id === 'area');
+if (!grupos.length) return;
+document.getElementById('explorar-grupos').innerHTML = grupos.map(g => `<div><h3 class="text-sm font-medium text-[#34322d]">${escapeHTML(g.titulo)}</h3><div class="mt-2 flex flex-wrap gap-2">${g.valores.map(v => `<a href="/materiais/${encodeURIComponent(g.id)}/${encodeURIComponent(v.slug)}/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-black/15 bg-white text-sm text-[#34322d] hover:border-sage transition-colors">${escapeHTML(v.nome)} <span class="text-xs opacity-70">${Number(v.total)}</span></a>`).join('')}</div></div>`).join('');
+setVisible(document.getElementById('explorar'), true);
+} catch (_) {}
+}
+document.addEventListener('DOMContentLoaded', () => { loadExplorar(); loadPortalContent(); routeFromHash(); });
 
 const cookieBanner = document.getElementById('cookie-banner');
 function setCookieBanner(visible) {
