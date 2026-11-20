@@ -297,6 +297,14 @@ recursos: { type: 'Recurso especial', primary: 'Ver detalhes' },
 planos: { type: 'Plano de aula', primary: 'Ver plano de aula' },
 downloads: { type: 'Material gratuito', primary: 'Ver material' }
 };
+function getPostTag(postCategories, fallback) {
+const keys = Object.keys(postCategories || {});
+if (keys.length) {
+const activeKey = keys.find(k => !Object.values(CONFIG.categories).includes(postCategories[k].slug));
+return activeKey ? decodeEntities(postCategories[activeKey].name) : fallback;
+}
+return fallback;
+}
 const IGNORED_LABELS = new Set(['uncategorized', 'sem categoria', 'sem-categoria']);
 function getPostLabels(post) {
 const sectionSlugs = Object.values(CONFIG.categories);
