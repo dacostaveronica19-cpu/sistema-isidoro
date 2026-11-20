@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Consentimento de cookies: por padrão, medição de audiência negada até o visitante aceitar -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+  analytics_storage: 'denied', wait_for_update: 500
+});
+try {
+  if (localStorage.getItem('isidoro-consent') === 'granted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+} catch (_) {}
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNL8HLW5');</script>
+<!-- End Google Tag Manager -->
+<title>Por que ensinamos a escala cartográfica do jeito errado — e como consertar isso | Sistema Isidoro</title>
+<meta name="description" content="A maioria dos currículos falha ao ensinar escala cartográfica porque exige que o aluno aprenda o conceito e sua aplicação complexa ao mesmo tempo. Isso…">
+<link rel="canonical" href="https://sistemaisidoro.com.br/materiais/por-que-ensinamos-a-escala-cartografica-do-jeito-errado-e-como-consertar-isso/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235a7c6f'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' font-weight='700' text-anchor='middle' fill='%23ffffff'%3EI%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Sistema Isidoro">
+<meta property="og:title" content="Por que ensinamos a escala cartográfica do jeito errado — e como consertar isso | Sistema Isidoro">
+<meta property="og:description" content="A maioria dos currículos falha ao ensinar escala cartográfica porque exige que o aluno aprenda o conceito e sua aplicação complexa ao mesmo tempo. Isso…">
+<meta property="og:url" content="https://sistemaisidoro.com.br/materiais/por-que-ensinamos-a-escala-cartografica-do-jeito-errado-e-como-consertar-isso/">
+<meta property="og:image" content="https://academiaisidoro.wordpress.com/wp-content/uploads/2026/06/chatgpt-image-jun-24-2026-10_28_57-am.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Por que ensinamos a escala cartográfica do jeito errado — e como consertar isso","description":"A maioria dos currículos falha ao ensinar escala cartográfica porque exige que o aluno aprenda o conceito e sua aplicação complexa ao mesmo tempo. Isso…","url":"https://sistemaisidoro.com.br/materiais/por-que-ensinamos-a-escala-cartografica-do-jeito-errado-e-como-consertar-isso/","inLanguage":"pt-BR","learningResourceType":"Plano de aula","isAccessibleForFree":true,"author":{"@type":"Person","name":"Verônica Silveira"},"publisher":{"@type":"Organization","name":"Sistema Isidoro","url":"https://sistemaisidoro.com.br/"},"image":"https://academiaisidoro.wordpress.com/wp-content/uploads/2026/06/chatgpt-image-jun-24-2026-10_28_57-am.png","datePublished":"2026-06-24T13:34:41.000Z","dateModified":"2026-06-24T13:34:41.000Z","keywords":"Geografia, Recursos Digitais"}</script>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+.font-serif { font-family: 'Crimson Text', serif; }
+.bg-sage { background-color: #5a7c6f; }
+.text-sage { color: #5a7c6f; }
+.border-sage { border-color: #5a7c6f; }
+.article-prose > * + * { margin-top: 1.25rem; }
+.article-prose h2, .article-prose h3, .article-prose h4 { font-family: 'Crimson Text', serif; font-weight: 700; line-height: 1.25; margin-top: 2rem; }
+.article-prose h2 { font-size: 2rem; }
+.article-prose h3 { font-size: 1.6rem; }
+.article-prose h4 { font-size: 1.3rem; }
+.article-prose a { color: #5a7c6f; text-decoration: underline; }
+.article-prose ul { list-style: disc; padding-left: 1.5rem; }
+.article-prose ol { list-style: decimal; padding-left: 1.5rem; }
+.article-prose blockquote { border-left: 3px solid #5a7c6f; padding-left: 1rem; color: #5e5e5b; }
+.article-prose img { max-width: 100%; height: auto; margin: 1.5rem auto; border-radius: .5rem; }
+.article-prose figure { margin: 1.5rem 0; }
+.article-prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+.article-prose th, .article-prose td { border: 1px solid #ddd; padding: .5rem .75rem; }
+</style>
+</head>
+<body class="bg-[#f8f8f7] text-[#34322d] min-h-screen flex flex-col">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNL8HLW5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<header class="bg-white border-b border-black/10 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="h-16 flex items-center justify-between">
+<a href="/" id="logo-link" class="font-serif text-2xl font-bold tracking-tight text-[#34322d]">
+Sistema <span class="text-sage">Isidoro</span>
+</a>
+
+<!-- Botão do Menu Mobile (Visível apenas em telas pequenas) -->
+<button id="mobile-menu-btn" class="md:hidden p-2 text-[#5e5e5b] hover:text-sage focus:outline-none" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+</svg>
+</button>
+
+<!-- Menu Desktop (Oculto em telas pequenas) -->
+<nav class="hidden md:flex space-x-8 text-sm font-medium">
+<a href="https://academiaisidoro.wordpress.com/" class="text-[#5e5e5b] hover:text-sage transition-colors">Blog</a>
+<a href="/#recursos-digitais" class="text-[#5e5e5b] hover:text-sage transition-colors">Jogos</a>
+<a href="/#planos-de-aula" class="text-[#5e5e5b] hover:text-sage transition-colors">Planos de Aula</a>
+<a href="/#downloads-gratuitos" class="text-[#5e5e5b] hover:text-sage transition-colors">Materiais Gratuitos</a>
+<a href="/#recursos-especiais" class="text-[#5e5e5b] hover:text-sage transition-colors">Loja</a>
+</nav>
+</div>
+</div>
+
+<!-- Menu Mobile (Injetado verticalmente, oculto por padrão) -->
+<nav id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-[#fafafa] px-4 pt-2 pb-4 space-y-3 text-sm font-medium shadow-inner">
+<a href="https://academiaisidoro.wordpress.com/" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Blog</a>
+<a href="/#recursos-digitais" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Jogos</a>
+<a href="/#planos-de-aula" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Planos de Aula</a>
+<a href="/#downloads-gratuitos" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Materiais Gratuitos</a>
+<a href="/#recursos-especiais" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Loja</a>
+</nav>
+</header>
+<main class="flex-grow w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="max-w-3xl mx-auto">
+<nav aria-label="Navegação" class="mb-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+<a href="/" class="inline-flex items-center gap-2 text-sage hover:underline">← Voltar ao portal</a>
+<a href="/materiais/" class="text-sage hover:underline">Todos os materiais</a>
+</nav>
+<article>
+<header class="mb-8 border-b border-black/10 pb-6">
+<p class="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sage mb-3">Plano de aula <span class="inline-block px-2 py-0.5 rounded-full bg-[#f1f1ef] text-xs text-[#5e5e5b]">Geografia</span> <span class="inline-block px-2 py-0.5 rounded-full bg-[#f1f1ef] text-xs text-[#5e5e5b]">Recursos Digitais</span></p>
+<h1 class="text-4xl sm:text-5xl font-bold font-serif leading-tight text-[#34322d]">Por que ensinamos a escala cartográfica do jeito errado — e como consertar isso</h1>
+<p class="mt-4 text-sm text-[#6b6a66]">24 de junho de 2026</p>
+</header>
+<div class="mb-8"><img src="https://academiaisidoro.wordpress.com/wp-content/uploads/2026/06/chatgpt-image-jun-24-2026-10_28_57-am.png" alt="" loading="lazy" class="w-full max-h-[32rem] object-cover rounded-xl"></div>
+<div class="article-prose text-base leading-8 text-[#34322d]">
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://dacostaveronica19-cpu.github.io/geografia-sexto-ano/" target="_blank" rel="noopener noreferrer">Acesse o Planejamento Aqui</a></div>
+</div>
+
+
+
+<p class="wp-block-paragraph">Conheça o Portal com os materiais do Sistema Isidoro.<a href="https://dacostaveronica19-cpu.github.io/sistema-isidoro/" target="_blank" rel="noopener noreferrer"> Clique Aqui!</a></p>
+
+
+
+<p class="wp-block-paragraph">Você já chegou em uma aula de mapas, explicou o que é escala cartográfica, fez exemplos no quadro — e mesmo assim, ao final, boa parte da turma ficou olhando para você com aquele olhar de “não entendi nada”?</p>
+
+
+
+<p class="wp-block-paragraph">Isso não é culpa sua. E não é culpa dos alunos.</p>
+
+
+
+<p class="wp-block-paragraph">É estrutural.</p>
+
+
+
+<p class="wp-block-paragraph">O problema está na sequência. A maioria dos currículos pede que o aluno aprenda o conceito de escala e aprenda a usá-la ao mesmo tempo, no mesmo momento, muitas vezes na mesma aula. Do ponto de vista da ciência cognitiva, isso é como pedir a uma criança que aprenda as regras do xadrez enquanto joga uma partida contra um adversário experiente. O cérebro simplesmente não consegue consolidar os dois processos simultaneamente.</p>
+
+
+
+<p class="wp-block-paragraph">A ciência tem nome para isso: <strong>sobrecarga da memória de trabalho</strong>. A memória de trabalho — a parte do cérebro que processa informações novas — tem capacidade limitada. Quando ela precisa gerenciar conceitos abstratos e habilidades procedimentais ao mesmo tempo, não consegue fazer bem nenhum dos dois.</p>
+
+
+
+<p class="wp-block-paragraph">Foi essa constatação que deu origem ao projeto que estou compartilhando aqui.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h2 class="wp-block-heading">Uma proposta de reorganização curricular</h2>
+
+
+
+<p class="wp-block-paragraph">O material que desenvolvi para o 6º ano de Geografia parte de uma premissa simples: <strong>não se usa o que não se sabe</strong>. Antes de pedir ao aluno que use a escala para analisar mapas climáticos, fusos horários ou transformações territoriais, é preciso garantir que ele domine a escala como ferramenta — de forma automática, sem ter que pensar nela enquanto a usa.</p>
+
+
+
+<p class="wp-block-paragraph">O currículo está organizado em três fases:</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Fase</th><th>Nome</th><th>O que o aluno aprende</th></tr></thead><tbody><tr><td>I</td><td>Literacia Espacial</td><td>Como usar ferramentas de representação: escala, mapas, modelos</td></tr><tr><td>II</td><td>Mecânica Sistêmica</td><td>Como o planeta funciona: movimentos, clima, ciclos</td></tr><tr><td>III</td><td>Integração e Síntese</td><td>Como analisar o espaço humano com as ferramentas das Fases I e II</td></tr></tbody></table></figure>
+
+
+
+<p class="wp-block-paragraph">Essa ordem não é arbitrária. Ela reflete o princípio do <strong>Alinhamento Representacional</strong>: os melhores resultados de aprendizagem acontecem quando cada camada conceitual é construída antes da próxima. Um aluno que ainda não tem a escala internalizada como ferramenta não consegue, ao mesmo tempo, usá-la para entender sistemas climáticos. O esforço cognitivo vai todo para a ferramenta — e o conteúdo fica de fora.</p>
+
+
+
+<p class="wp-block-paragraph">O material da <strong>Fase I — Literacia Espacial</strong> é o que estou tornando público agora.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h2 class="wp-block-heading">O Método CPA: por que partir do concreto</h2>
+
+
+
+<p class="wp-block-paragraph">A sequência de ensino da Fase I é baseada no <strong>Método de Singapura</strong>, amplamente pesquisado e adotado em países com alto desempenho educacional. O método organiza o aprendizado em três etapas progressivas — <strong>Concreto, Pictórico, Abstrato</strong> — e sua lógica é neurológica, não apenas pedagógica.</p>
+
+
+
+<p class="wp-block-paragraph">Crianças de 11 anos ainda estão na transição entre o pensamento concreto e o pensamento abstrato formal. Iniciar pelo concreto não é subestimá-las: é respeitar o modo como o cérebro delas ainda processa o mundo.</p>
+
+
+
+<p class="wp-block-paragraph">Na prática, a Fase I se desdobra em três sessões:</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Sessão 1 — Concreto:</strong> os alunos medem a sala de aula com fita métrica. Nenhum conceito novo é introduzido. O objetivo é criar uma âncora física — uma experiência real à qual todos os conceitos seguintes vão se referir.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Sessão 2 — Pictórico:</strong> os alunos transpõem as medidas para o papel, usando a régua, com uma regra clara e única: <em>1 metro no chão = 1 centímetro no papel</em>. Eles estão criando uma representação proporcional do espaço — não uma abstração, mas uma imagem com proporção verificável.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Sessão 3 — Abstrato:</strong> somente agora é apresentada a notação formal. Mas ela é introduzida como nomeação de algo que o aluno já fez — não como conceito novo a ser memorizado: <em>“Vocês acabaram de criar um mapa. Para que outra pessoa consiga lê-lo, precisamos colocar um código nele: ESCALA 1:100.”</em></p>
+
+
+
+<p class="wp-block-paragraph">A diferença entre esse momento e um momento de introdução tradicional é enorme. O aluno não está ouvindo sobre escala — ele está reconhecendo, em uma notação, algo que viveu com o corpo.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h2 class="wp-block-heading">Como saber se o aluno realmente aprendeu</h2>
+
+
+
+<p class="wp-block-paragraph">O material inclui dois <strong>checkpoints</strong> rápidos, que podem ser aplicados em minutos e revelam muito sobre o estado real da compreensão da turma.</p>
+
+
+
+<p class="wp-block-paragraph">O primeiro checkpoint — após a Sessão 2 — pede que o aluno represente no caderno, com a régua, o comprimento real do quadro da sala. Simples, mas revelador: quem não conseguiu fazer a travessia entre o metro físico e o centímetro no papel aparece imediatamente.</p>
+
+
+
+<p class="wp-block-paragraph">O segundo checkpoint — após a Sessão 3 — é o mais importante. Ele testa a <strong>reversibilidade do raciocínio</strong>: dado um mapa com escala 1:100 e uma medida de 2 cm no papel, qual é a medida real? Quem apenas memorizou a notação não consegue responder. Quem compreendeu, sim.</p>
+
+
+
+<p class="wp-block-paragraph">Esse critério de distinção entre memorização e compreensão é central na proposta. A escala cartográfica só é útil quando o aluno consegue operar com ela nos dois sentidos.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h2 class="wp-block-heading">Revisão espaçada: garantindo que o aprendizado dure</h2>
+
+
+
+<p class="wp-block-paragraph">Aprender algo uma vez não garante que ele seja retido. A neurociência é bastante clara sobre isso: o cérebro consolida memórias por meio de recuperações ativas espaçadas — ou seja, sendo chamado a lembrar de algo em intervalos crescentes de tempo.</p>
+
+
+
+<p class="wp-block-paragraph">O material prevê três momentos de revisão após as sessões:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>+1 dia:</strong> o aluno mede a própria cama em casa e faz a planta na escala 1:100. O objetivo é a transferência para um novo contexto.</li>
+
+
+
+<li><strong>+1 semana:</strong> o aluno recebe uma planta pronta e calcula as medidas reais. O objetivo é a análise inversa — o raciocínio no sentido contrário.</li>
+
+
+
+<li><strong>+1 mês:</strong> o aluno trabalha com a escala 1:100.000 em um mapa de estado. O objetivo é a fluência com novas proporções — e a preparação silenciosa para a Fase II.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Esse último exercício funciona como aquecimento para os conteúdos seguintes. O raciocínio é o mesmo; só a proporção mudou. E um aluno que já domina o raciocínio aprende a nova proporção em minutos.</p>
+
+
+
+<p class="wp-block-paragraph">Há um critério de encerramento da Fase I explícito no material: se mais de 20% da turma apresentar dificuldades na revisão de +1 semana, a recomendação é não avançar. O sistema pode ser reiniciado com outros espaços físicos — a quadra, o pátio, a biblioteca. O conteúdo novo é a escala; o espaço medido pode mudar.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h2 class="wp-block-heading">O que torna essa proposta diferente</h2>
+
+
+
+<p class="wp-block-paragraph">Não é um novo método inventado. É uma síntese de evidências que já existiam, aplicada de forma coerente a um conteúdo específico.</p>
+
+
+
+<p class="wp-block-paragraph">O que o material faz é partir do que a ciência cognitiva sabe sobre como o cérebro aprende — sobrecarga de memória de trabalho, acoplamento neural entre professor e aluno, consolidação por recuperação ativa — e traduzir isso em uma sequência de aula que qualquer professor pode conduzir, com os materiais que já tem.</p>
+
+
+
+<p class="wp-block-paragraph">A analogia que uso no manual é a do músico: antes de interpretar uma sinfonia, o músico precisa saber ler partitura. Pedir que ele leia e interprete ao mesmo tempo não é desafiador — é contraproducente. A Fase I é o momento de aprender a ler a partitura geográfica.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<h2 class="wp-block-heading">Como acessar o material</h2>
+
+
+
+<p class="wp-block-paragraph">O material completo está disponível gratuitamente, organizado em um site de consulta que pode ser acessado pelo computador ou pelo celular, inclusive durante a aula.</p>
+
+
+
+<p class="wp-block-paragraph">🔗 <strong><a href="https://dacostaveronica19-cpu.github.io/geografia-sexto-ano" target="_blank" rel="noopener noreferrer">dacostaveronica19-cpu.github.io/geografia-sexto-ano</a></strong></p>
+
+
+
+<p class="wp-block-paragraph">No site você encontra:</p>
+
+
+
+<ul class="wp-block-list">
+<li>O <strong>manual pedagógico completo</strong>, com toda a justificativa cognitiva, as orientações de condução e as referências científicas</li>
+
+
+
+<li>As <strong>três sessões CPA</strong> detalhadas, com orientações passo a passo</li>
+
+
+
+<li>Os <strong>checkpoints</strong> prontos para aplicar</li>
+
+
+
+<li>O calendário de <strong>revisão espaçada</strong></li>
+
+
+
+<li>A <strong>conexão com a BNCC</strong> e a progressão para as Fases II e III</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Se você testar com sua turma, me conta. Estou construindo isso com base no que funciona na prática — e o que funciona na prática vem de professores que experimentam.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+
+
+<p class="wp-block-paragraph"><em>Verônica Silveira é professora e desenvolvedora de materiais pedagógicos para a educação básica brasileira.</em> <em>Instagram: <a href="https://www.instagram.com/auxilium.1/" target="_blank" rel="noopener noreferrer">@auxilium.1</a></em></p>
+
+</div>
+</article>
+</div>
+</main>
+<footer class="bg-white border-t border-black/10 py-8 mt-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+<div class="text-xs text-[#6b6a66]">
+<p>&copy; 2026 Sistema Isidoro. Todos os direitos reservados.</p>
+<p class="mt-1"><a href="/materiais/" class="hover:text-sage underline">Todos os materiais</a> · <a href="/privacidade.html" class="hover:text-sage underline">Política de privacidade</a> · <button type="button" id="gerenciar-cookies" class="hover:text-sage underline">Gerenciar cookies</button></p>
+</div>
+<div class="text-xs text-[#6b6a66]">
+<p>Desenvolvedora: <span class="font-medium text-[#34322d]">Verônica Silveira</span> (<a href="mailto:dacostaveronica19@gmail.com" class="hover:text-sage underline">dacostaveronica19@gmail.com</a>)</p>
+</div>
+</div>
+</footer>
+<!-- Aviso de cookies -->
+<div id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-text" class="hidden fixed inset-x-0 bottom-0 z-[60] bg-white border-t border-black/10 shadow-lg" hidden>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center gap-4">
+<div class="text-sm text-[#34322d] md:flex-1">
+<p id="cookie-title" class="font-semibold">Cookies de medição de audiência</p>
+<p id="cookie-text" class="mt-1 text-[#5e5e5b]">O site usa o Google Tag Manager para medir quantas pessoas acessam cada página. Esses cookies só são ativados com a sua autorização. A <a href="/privacidade.html" class="underline text-sage">política de privacidade</a> explica os detalhes.</p>
+</div>
+<div class="flex gap-3">
+<button type="button" id="cookie-recusar" class="px-4 py-2.5 text-sm font-medium rounded-lg border border-black/20 text-[#34322d] hover:bg-black/5">Recusar</button>
+<button type="button" id="cookie-aceitar" class="px-4 py-2.5 text-sm font-medium rounded-lg bg-sage text-white hover:opacity-90">Aceitar</button>
+</div>
+</div>
+</div>
+<script>
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const menuIcon = document.getElementById('menu-icon');
+function toggleMobileMenu() {
+mobileMenu.classList.toggle('hidden');
+mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
+menuIcon.setAttribute('d', mobileMenu.classList.contains('hidden') ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
+}
+mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+const cookieBanner = document.getElementById('cookie-banner');
+function setCookieBanner(visible) {
+cookieBanner.classList.toggle('hidden', !visible);
+cookieBanner.hidden = !visible;
+}
+function saveConsent(value) {
+try { localStorage.setItem('isidoro-consent', value); } catch (_) {}
+gtag('consent', 'update', { analytics_storage: value === 'granted' ? 'granted' : 'denied' });
+setCookieBanner(false);
+}
+document.getElementById('cookie-aceitar').addEventListener('click', () => saveConsent('granted'));
+document.getElementById('cookie-recusar').addEventListener('click', () => saveConsent('denied'));
+document.getElementById('gerenciar-cookies').addEventListener('click', () => setCookieBanner(true));
+try { if (!localStorage.getItem('isidoro-consent')) setCookieBanner(true); } catch (_) { setCookieBanner(true); }
+</script>
+</body>
+</html>
