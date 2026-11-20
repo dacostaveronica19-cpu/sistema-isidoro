@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Consentimento de cookies: por padrão, medição de audiência negada até o visitante aceitar -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+  analytics_storage: 'denied', wait_for_update: 500
+});
+try {
+  if (localStorage.getItem('isidoro-consent') === 'granted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+} catch (_) {}
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -52,15 +66,15 @@ body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 <body class="bg-[#f8f8f7] text-[#34322d] min-h-screen flex flex-col">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNL8HLW5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Barra de Navegação Superior -->
-<header class="bg-white border-b border-black/10 sticky top-0 z-50">
+<header id="topo" class="bg-white border-b border-black/10 sticky top-0 z-50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="h-16 flex items-center justify-between">
-<a href="https://academiaisidoro.wordpress.com/" class="font-serif text-2xl font-bold tracking-tight text-[#34322d]">
+<a href="#topo" class="font-serif text-2xl font-bold tracking-tight text-[#34322d]">
 Sistema <span class="text-sage">Isidoro</span>
 </a>
 
 <!-- Botão do Menu Mobile (Visível apenas em telas pequenas) -->
-<button id="mobile-menu-btn" class="md:hidden p-2 text-[#5e5e5b] hover:text-sage focus:outline-none" aria-label="Abrir menu">
+<button id="mobile-menu-btn" class="md:hidden p-2 text-[#5e5e5b] hover:text-sage focus:outline-none" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
 </svg>
@@ -79,7 +93,7 @@ Sistema <span class="text-sage">Isidoro</span>
 
 <!-- Menu Mobile (Injetado verticalmente, oculto por padrão) -->
 <nav id="mobile-menu" class="hidden md:hidden border-t border-black/5 bg-[#fafafa] px-4 pt-2 pb-4 space-y-3 text-sm font-medium shadow-inner">
-<a href="https://academiaisidoro.wordpress.com/" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors">Blog</a>
+<a href="https://academiaisidoro.wordpress.com/" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Blog</a>
 <a href="#recursos-digitais" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Recursos Digitais</a>
 <a href="#recursos-especiais" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Recursos Especiais</a>
 <a href="#planos-de-aula" class="block text-[#5e5e5b] hover:text-sage py-1.5 transition-colors" onclick="toggleMobileMenu()">Planos de Aula</a>
@@ -89,12 +103,13 @@ Sistema <span class="text-sage">Isidoro</span>
 
 <!-- Conteúdo Principal -->
 <main id="portal-main" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+<h1 class="sr-only">Sistema Isidoro: portal educacional</h1>
 
 <!-- SEÇÃO: RECURSOS DIGITAIS DIDÁTICOS (JOGOS E FERRAMENTAS INTERATIVAS) -->
 <section id="recursos-digitais" class="scroll-mt-20">
 <div class="mb-8 border-b border-black/10 pb-6">
 <span class="text-xs font-semibold uppercase tracking-wider text-sage">Aprender Investigando</span>
-<h1 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Recursos Digitais Didáticos</h1>
+<h2 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Recursos Digitais Didáticos</h2>
 <p class="mt-2 text-sm text-[#5e5e5b] max-w-2xl leading-relaxed">
 Jogos e ferramentas interativas que colocam o aluno no papel de quem investiga, em vez de apenas ler sobre o resultado da investigação.
 </p>
@@ -104,16 +119,16 @@ Jogos e ferramentas interativas que colocam o aluno no papel de quem investiga, 
 <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
 <div class="p-6">
 <span class="text-xs font-semibold text-sage uppercase tracking-wider">Jogo investigativo · História</span>
-<h2 class="text-xl font-bold font-serif mt-2 text-[#34322d] leading-snug">O Enigma do Homem de Gelo</h2>
+<h3 class="text-xl font-bold font-serif mt-2 text-[#34322d] leading-snug">O Enigma do Homem de Gelo</h3>
 <p class="text-sm text-[#5e5e5b] mt-3 leading-relaxed">
 O aluno assume o papel de pesquisador no caso real de Ötzi, a múmia de gelo dos Alpes: escava a geleira, analisa evidências em laboratório, data amostras por carbono-14, publica artigos científicos e enfrenta os pareceres da comunidade acadêmica. O jogo reproduz o próprio método de investigação histórico-científico — hipótese, teste, revisão pelos pares, correção de rota — e não apenas o conteúdo sobre o achado arqueológico.
 </p>
-<p class="text-xs text-[#858481] mt-3">
+<p class="text-xs text-[#6b6a66] mt-3">
 <strong>Indicado para:</strong> turmas com repertório prévio em leitura e raciocínio investigativo. Não recomendado como primeiro contato com jogos digitais.
 </p>
 </div>
 <div class="p-6 pt-0 mt-auto">
-<a href="https://dacostaveronica19-cpu.github.io/iceman-game/" target="_blank" class="w-full inline-flex justify-center items-center px-4 py-2.5 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">
+<a href="https://dacostaveronica19-cpu.github.io/iceman-game/" target="_blank" rel="noopener noreferrer" class="w-full inline-flex justify-center items-center px-4 py-2.5 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">
 Jogar agora
 </a>
 </div>
@@ -125,13 +140,13 @@ Jogar agora
 <section id="recursos-especiais" class="scroll-mt-20">
 <div class="mb-8 border-b border-black/10 pb-6">
 <span class="text-xs font-semibold uppercase tracking-wider text-sage">Materiais Exclusivos</span>
-<h1 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Loja de Recursos Especiais</h1>
+<h2 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Loja de Recursos Especiais</h2>
 <p class="mt-2 text-sm text-[#5e5e5b] max-w-2xl leading-relaxed">
 Materiais didáticos exclusivos, sequências adaptadas, kits de avaliação diagnóstica e propostas de intervenção pedagógica inovadoras.
 </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="container-recursos">
-<div class="col-span-full text-center py-12 text-sm text-[#858481]">Carregando recursos exclusivos...</div>
+<div class="col-span-full text-center py-12 text-sm text-[#6b6a66]">Carregando recursos exclusivos...</div>
 </div>
 </section>
 
@@ -139,13 +154,13 @@ Materiais didáticos exclusivos, sequências adaptadas, kits de avaliação diag
 <section id="planos-de-aula" class="scroll-mt-20">
 <div class="mb-8 border-b border-black/10 pb-6">
 <span class="text-xs font-semibold uppercase tracking-wider text-sage">Teoria e Sequências</span>
-<h1 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Planos de Aula</h1>
+<h2 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Planos de Aula</h2>
 <p class="mt-2 text-sm text-[#5e5e5b] max-w-2xl leading-relaxed">
 Sequências didáticas estruturadas com profundidade histórica, análise detalhada de fontes e direcionamento programático.
 </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="container-planos">
-<div class="col-span-full text-center py-12 text-sm text-[#858481]">Carregando planos de aula...</div>
+<div class="col-span-full text-center py-12 text-sm text-[#6b6a66]">Carregando planos de aula...</div>
 </div>
 </section>
 
@@ -153,19 +168,19 @@ Sequências didáticas estruturadas com profundidade histórica, análise detalh
 <section id="downloads-gratuitos" class="scroll-mt-20">
 <div class="mb-8 border-b border-black/10 pb-6">
 <span class="text-xs font-semibold uppercase tracking-wider text-sage">Apoio em Sala de Aula</span>
-<h1 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Materiais Didáticos Gratuitos</h1>
+<h2 class="text-3xl font-bold font-serif mt-1 text-[#34322d]">Materiais Didáticos Gratuitos</h2>
 <p class="mt-2 text-sm text-[#5e5e5b] max-w-2xl leading-relaxed">
 Kits de atividades prontas, exercícios adaptados e ferramentas pedagógicas de suporte para baixar e aplicar imediatamente.
 </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="container-downloads">
-<div class="col-span-full text-center py-12 text-sm text-[#858481]">Carregando materiais didáticos...</div>
+<div class="col-span-full text-center py-12 text-sm text-[#6b6a66]">Carregando materiais didáticos...</div>
 </div>
 </section>
 
 </main>
 
-<main id="article-view" class="flex-grow w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 hidden" aria-live="polite">
+<main id="article-view" class="flex-grow w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 hidden" aria-live="polite" hidden>
 <div class="max-w-3xl mx-auto">
 <a href="#portal" class="inline-flex items-center gap-2 text-sm font-medium text-sage hover:underline mb-8">← Voltar ao portal</a>
 <div id="article-status" class="text-center py-16 text-[#5e5e5b]" role="status">Carregando artigo...</div>
@@ -173,7 +188,7 @@ Kits de atividades prontas, exercícios adaptados e ferramentas pedagógicas de 
 <header class="mb-8 border-b border-black/10 pb-6">
 <p id="article-category" class="text-xs font-semibold uppercase tracking-wider text-sage mb-3"></p>
 <h1 id="article-title" class="text-4xl sm:text-5xl font-bold font-serif leading-tight text-[#34322d]"></h1>
-<p id="article-date" class="mt-4 text-sm text-[#858481]"></p>
+<p id="article-date" class="mt-4 text-sm text-[#6b6a66]"></p>
 </header>
 <div id="article-featured-image" class="mb-8"></div>
 <div id="article-body" class="article-prose text-base leading-8 text-[#34322d]"></div>
@@ -184,14 +199,30 @@ Kits de atividades prontas, exercícios adaptados e ferramentas pedagógicas de 
 <!-- Rodapé -->
 <footer class="bg-white border-t border-black/10 py-8 mt-12">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-<div class="text-xs text-[#858481]">
+<div class="text-xs text-[#6b6a66]">
 <p>&copy; 2026 Sistema Isidoro. Todos os direitos reservados.</p>
+<p class="mt-1"><a href="privacidade.html" class="hover:text-sage underline">Política de privacidade</a> · <button type="button" id="gerenciar-cookies" class="hover:text-sage underline">Gerenciar cookies</button></p>
 </div>
-<div class="text-xs text-[#858481]">
+<div class="text-xs text-[#6b6a66]">
 <p>Desenvolvedora: <span class="font-medium text-[#34322d]">Verônica Silveira</span> (<a href="mailto:dacostaveronica19@gmail.com" class="hover:text-sage underline">dacostaveronica19@gmail.com</a>)</p>
 </div>
 </div>
 </footer>
+
+
+<!-- Aviso de cookies -->
+<div id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-text" class="hidden fixed inset-x-0 bottom-0 z-[60] bg-white border-t border-black/10 shadow-lg" hidden>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-center gap-4">
+<div class="text-sm text-[#34322d] md:flex-1">
+<p id="cookie-title" class="font-semibold">Cookies de medição de audiência</p>
+<p id="cookie-text" class="mt-1 text-[#5e5e5b]">O site usa o Google Tag Manager para medir quantas pessoas acessam cada página. Esses cookies só são ativados com a sua autorização. A <a href="privacidade.html" class="underline text-sage">política de privacidade</a> explica os detalhes.</p>
+</div>
+<div class="flex gap-3">
+<button type="button" id="cookie-recusar" class="px-4 py-2.5 text-sm font-medium rounded-lg border border-black/20 text-[#34322d] hover:bg-black/5">Recusar</button>
+<button type="button" id="cookie-aceitar" class="px-4 py-2.5 text-sm font-medium rounded-lg bg-sage text-white hover:opacity-90">Aceitar</button>
+</div>
+</div>
+</div>
 
 <!-- Lógica de Integração com a API do WordPress e Controle de Menu -->
 <script>
@@ -205,6 +236,7 @@ const mobileMenu = document.getElementById('mobile-menu');
 const menuIcon = document.getElementById('menu-icon');
 function toggleMobileMenu() {
 mobileMenu.classList.toggle('hidden');
+mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
 menuIcon.setAttribute('d', mobileMenu.classList.contains('hidden') ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
 }
 mobileMenuBtn.addEventListener('click', toggleMobileMenu);
@@ -217,7 +249,7 @@ return doc.body.textContent || '';
 }
 function cleanText(html, limit = 160) {
 const doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
-const text = (doc.body.textContent || '').replace(/\\s+/g, ' ').trim();
+const text = (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
 return text.length > limit ? text.substring(0, limit) + '...' : text;
 }
 function getPostTag(postCategories, fallback) {
@@ -237,7 +269,7 @@ const tag = getPostTag(post.categories, 'Pedagógico');
 return `
 <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
 <div><div class="h-48 w-full bg-gray-100 relative"><img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png';"></div>
-<div class="p-6"><span class="text-xs font-semibold text-sage uppercase tracking-wider">${escapeHTML(tag)}</span><h2 class="text-xl font-bold font-serif mt-2 text-[#34322d] leading-snug">${escapeHTML(title)}</h2>
+<div class="p-6"><span class="text-xs font-semibold text-sage uppercase tracking-wider">${escapeHTML(tag)}</span><h2 class="text-xl font-bold font-serif mt-2 text-[#34322d] leading-snug">${escapeHTML(title)}</h3>
 <p class="text-sm text-[#5e5e5b] mt-3 line-clamp-3">${escapeHTML(description)}</p></div></div>
 <div class="p-6 pt-0 mt-auto"><a href="${articleHref(post)}" class="w-full inline-flex justify-center items-center px-4 py-2.5 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">${escapeHTML(buttonText)}</a></div>
 </div>`;
@@ -261,12 +293,12 @@ if (postCats.includes(CONFIG.categories.recursos)) html.recursos += createCardHT
 if (postCats.includes(CONFIG.categories.planos)) html.planos += createCardHTML(post, 'Acessar Plano de Aula');
 if (postCats.includes(CONFIG.categories.downloads)) html.downloads += createCardHTML(post, 'Baixar Recurso');
 });
-containers.recursos.innerHTML = html.recursos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum recurso exclusivo disponível no momento.</div>';
-containers.planos.innerHTML = html.planos || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum plano de aula disponível no momento.</div>';
-containers.downloads.innerHTML = html.downloads || '<div class="col-span-full text-center py-12 text-sm text-[#858481]">Nenhum material gratuito disponível no momento.</div>';
+containers.recursos.innerHTML = html.recursos || '<div class="col-span-full text-center py-12 text-sm text-[#6b6a66]">Nenhum recurso exclusivo disponível no momento.</div>';
+containers.planos.innerHTML = html.planos || '<div class="col-span-full text-center py-12 text-sm text-[#6b6a66]">Nenhum plano de aula disponível no momento.</div>';
+containers.downloads.innerHTML = html.downloads || '<div class="col-span-full text-center py-12 text-sm text-[#6b6a66]">Nenhum material gratuito disponível no momento.</div>';
 } catch (error) {
 console.error(error);
-const errorMessage = '<div class="col-span-full text-center py-12 text-sm text-red-600">Erro ao carregar os conteúdos. Verifique a conexão com o WordPress.</div>';
+const errorMessage = '<div class="col-span-full text-center py-12 text-sm text-red-600">Não foi possível carregar os conteúdos agora. Tente novamente em instantes.</div>';
 ['container-recursos','container-planos','container-downloads'].forEach(id => document.getElementById(id).innerHTML = errorMessage);
 }
 }
@@ -317,20 +349,24 @@ const wrapper = document.createElement('div');
 wrapper.append(result);
 return wrapper.innerHTML;
 }
+function setVisible(el, visible) {
+el.classList.toggle('hidden', !visible);
+el.hidden = !visible;
+}
 let articleRequestId = 0;
 function showPortal() {
 articleRequestId++;
-document.getElementById('portal-main').classList.remove('hidden');
-document.getElementById('article-view').classList.add('hidden');
+setVisible(document.getElementById('portal-main'), true);
+setVisible(document.getElementById('article-view'), false);
 document.title = 'Sistema Isidoro - Portal Educacional';
 }
 async function showArticle(slug) {
 const requestId = ++articleRequestId;
-document.getElementById('portal-main').classList.add('hidden');
+setVisible(document.getElementById('portal-main'), false);
 const view = document.getElementById('article-view');
 const status = document.getElementById('article-status');
 const content = document.getElementById('article-content');
-view.classList.remove('hidden');
+setVisible(view, true);
 content.classList.add('hidden');
 status.classList.remove('hidden');
 status.textContent = 'Carregando artigo...';
@@ -380,6 +416,21 @@ if (link) { showPortal(); if (mobileMenu && !mobileMenu.classList.contains('hidd
 });
 window.addEventListener('hashchange', routeFromHash);
 document.addEventListener('DOMContentLoaded', () => { loadPortalContent(); routeFromHash(); });
+
+const cookieBanner = document.getElementById('cookie-banner');
+function setCookieBanner(visible) {
+cookieBanner.classList.toggle('hidden', !visible);
+cookieBanner.hidden = !visible;
+}
+function saveConsent(value) {
+try { localStorage.setItem('isidoro-consent', value); } catch (_) {}
+gtag('consent', 'update', { analytics_storage: value === 'granted' ? 'granted' : 'denied' });
+setCookieBanner(false);
+}
+document.getElementById('cookie-aceitar').addEventListener('click', () => saveConsent('granted'));
+document.getElementById('cookie-recusar').addEventListener('click', () => saveConsent('denied'));
+document.getElementById('gerenciar-cookies').addEventListener('click', () => setCookieBanner(true));
+try { if (!localStorage.getItem('isidoro-consent')) setCookieBanner(true); } catch (_) { setCookieBanner(true); }
 </script>
 </body>
 </html>
