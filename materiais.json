@@ -1,0 +1,630 @@
+{
+ "grupos": [
+  {
+   "id": "etapa",
+   "titulo": "Etapa ou modalidade",
+   "valores": [
+    {
+     "slug": "eja",
+     "nome": "EJA",
+     "total": 5
+    }
+   ]
+  },
+  {
+   "id": "area",
+   "titulo": "Área ou período",
+   "valores": [
+    {
+     "slug": "historia-antiga",
+     "nome": "História Antiga",
+     "total": 5
+    },
+    {
+     "slug": "historia-moderna",
+     "nome": "História Moderna",
+     "total": 5
+    },
+    {
+     "slug": "historia-contemporanea",
+     "nome": "História Contemporânea",
+     "total": 3
+    },
+    {
+     "slug": "historia-do-brasil",
+     "nome": "História do Brasil",
+     "total": 9
+    },
+    {
+     "slug": "historia-da-africa",
+     "nome": "História da África",
+     "total": 3
+    },
+    {
+     "slug": "geografia",
+     "nome": "Geografia",
+     "total": 2
+    },
+    {
+     "slug": "computacao",
+     "nome": "Computação",
+     "total": 1
+    }
+   ]
+  },
+  {
+   "id": "tipo",
+   "titulo": "Tipo de material",
+   "valores": [
+    {
+     "slug": "planos",
+     "nome": "Plano de aula",
+     "total": 5
+    },
+    {
+     "slug": "downloads",
+     "nome": "Material gratuito",
+     "total": 19
+    },
+    {
+     "slug": "recursos",
+     "nome": "Recurso especial",
+     "total": 7
+    }
+   ]
+  }
+ ],
+ "materiais": [
+  {
+   "slug": "historia-na-eja-conheca-a-colecao-completa-do-6o-periodo-elaborada-pelo-sistema-isidoro",
+   "titulo": "História na EJA – conheça a coleção completa do 6º período elaborada pelo Sistema Isidoro",
+   "descricao": "Coleção autoral de História para o 6º período da EJA desenvolvida pela professora e doutora Verônica Silveira no Sistema Isidoro. Estruturada em 5…",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/11/gemini_generated_image_kfxu6rkfxu6rkfxu.jpeg",
+   "etapa": [
+    "eja"
+   ],
+   "area": [
+    "historia-antiga"
+   ],
+   "rotulos": [
+    "EJAI",
+    "História Antiga",
+    "Material Didático"
+   ],
+   "data": "2026-11-13T14:01:04.000Z"
+  },
+  {
+   "slug": "materiais-didaticos-para-eja-estrategias-contra-a-evasao",
+   "titulo": "Materiais didáticos para EJA: estratégias contra a evasão",
+   "descricao": "O material didático para a EJA influencia diretamente a permanência do estudante adulto na escola. O texto reúne o que a pesquisa educacional brasileira…",
+   "tipo": "planos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/11/pensive-teacher-in-an-empty-classroom.png",
+   "etapa": [
+    "eja"
+   ],
+   "area": [],
+   "rotulos": [
+    "Material Didático"
+   ],
+   "data": "2026-11-05T13:01:38.000Z"
+  },
+  {
+   "slug": "o-enigma-do-homem-de-gelo-um-jogo-para-aprender-como-a-ciencia-chega-a-uma-conclusao",
+   "titulo": "O enigma do Homem de Gelo: um jogo para aprender como a ciência chega a uma conclusão",
+   "descricao": "Hipótese, evidência, crítica e correção: é assim que a ciência funciona, e agora dá para praticar. Investigue o caso de Ötzi, o Homem de Gelo, em um jogo…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/09/gemini_generated_image_vckfgwvckfgwvckf.jpg",
+   "etapa": [],
+   "area": [],
+   "rotulos": [
+    "Recursos Digitais",
+    "Jogo Histórico",
+    "Material Didático"
+   ],
+   "data": "2026-09-28T19:09:31.000Z"
+  },
+  {
+   "slug": "por-que-ensinamos-a-escala-cartografica-do-jeito-errado-e-como-consertar-isso",
+   "titulo": "Por que ensinamos a escala cartográfica do jeito errado — e como consertar isso",
+   "descricao": "A maioria dos currículos falha ao ensinar escala cartográfica porque exige que o aluno aprenda o conceito e sua aplicação complexa ao mesmo tempo. Isso…",
+   "tipo": "planos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/06/chatgpt-image-jun-24-2026-10_28_57-am.png",
+   "etapa": [],
+   "area": [
+    "geografia"
+   ],
+   "rotulos": [
+    "Geografia",
+    "Recursos Digitais",
+    "cartografia",
+    "escala",
+    "Singapura"
+   ],
+   "data": "2026-06-24T13:34:41.000Z"
+  },
+  {
+   "slug": "avaliacao-adaptada-primeira-guerra-mundial-para-alunos-com-deficiencia",
+   "titulo": "Avaliação Adaptada: Primeira Guerra Mundial para Alunos com Deficiência",
+   "descricao": "Precisa de materiais inclusivos e prontos para uso? Conheça esta avaliação adaptada sobre a Primeira Guerra Mundial, projetada para estimular a autonomia…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/06/pexels-photo-15447299.jpeg",
+   "etapa": [],
+   "area": [
+    "historia-contemporanea"
+   ],
+   "rotulos": [
+    "história contemporânea",
+    "educação inclusiva",
+    "historia contemporânea",
+    "primeira guerra mundial"
+   ],
+   "data": "2026-06-11T17:05:45.000Z"
+  },
+  {
+   "slug": "belle-epoque-material-inclusivo",
+   "titulo": "Belle Époque – material inclusivo",
+   "descricao": "A realidade das salas de aula hoje exige muito do tempo do professor, que frequentemente se vê obrigado a preparar caminhos diferentes para explicar o…",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/06/hotbelleepoque.png",
+   "etapa": [],
+   "area": [
+    "historia-contemporanea"
+   ],
+   "rotulos": [
+    "história contemporânea",
+    "Belle Époque",
+    "DUA",
+    "educação inclusiva",
+    "história contempo",
+    "Recurso Didático"
+   ],
+   "data": "2026-06-10T18:12:34.000Z"
+  },
+  {
+   "slug": "uma-proposta-pedagogica-sobre-os-guaicurus",
+   "titulo": "Uma Proposta Pedagógica sobre os Guaicurus",
+   "descricao": "ACESSE O PLANO DE AULA DIGITAL O estudo da história indígena, tanto no período pré-colonial quanto durante a colonização, esbarra em barreiras…",
+   "tipo": "planos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/06/debret_-_carga_de_cavalaria_guaicuru.jpg",
+   "etapa": [],
+   "area": [
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "Fontes Históricas",
+    "Recursos Digitais",
+    "HISTÓRIA DO BRASIL",
+    "INDÍGENAS",
+    "PLANO DE AULA"
+   ],
+   "data": "2026-06-03T19:49:58.000Z"
+  },
+  {
+   "slug": "kit-de-atividades-mulheres-na-ciencia",
+   "titulo": "Kit de atividades – mulheres na ciência",
+   "descricao": "Este material é a versão em português brasileiro do kit de atividades desenvolvido pela Europeana, traduzido por Verônica Silveira como parte do Projeto…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/mulheresnaciencia.png",
+   "etapa": [],
+   "area": [],
+   "rotulos": [
+    "Sociologia",
+    "História das Mulheres",
+    "Kit pedagógico",
+    "Material Didático"
+   ],
+   "data": "2026-05-27T16:47:28.000Z"
+  },
+  {
+   "slug": "historia-regional-e-novas-metodologias-o-potencial-pedagogico-do-ensino-da-baixada-colonial-na-eja",
+   "titulo": "História Regional e Novas Metodologias: O Potencial Pedagógico do Ensino da Baixada Colonial na EJA",
+   "descricao": "A construção de propostas didáticas para a Educação de Jovens e Adultos (EJA) exige do docente a superação de manuais generalistas que, com frequência…",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/gemini_generated_image_f7rlr5f7rlr5f7rl.png",
+   "etapa": [
+    "eja"
+   ],
+   "area": [
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "História do Brasil",
+    "Conceitos",
+    "Material Didático"
+   ],
+   "data": "2026-05-26T19:09:24.000Z"
+  },
+  {
+   "slug": "o-mundo-como-codigo-integrando-computacao-e-lingua-portuguesa-no-1o-ano",
+   "titulo": "O Mundo como Código: Integrando Computação e Língua Portuguesa no 1º Ano",
+   "descricao": "O letramento digital no início do Ensino Fundamental é frequentemente reduzido ao uso instrumental de dispositivos. No entanto, a Habilidade EF01CO04…",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "computacao"
+   ],
+   "rotulos": [
+    "COMPUTAÇÃO",
+    "Desplugada",
+    "Ensino Fundamental",
+    "Material Didático"
+   ],
+   "data": "2026-05-12T18:40:47.000Z"
+  },
+  {
+   "slug": "cidadania-no-brasil-kit-de-avaliacao-diagnostica-e-atividades-adaptadas",
+   "titulo": "Cidadania no Brasil – Kit de Avaliação Diagnóstica e Atividades Adaptadas",
+   "descricao": "Encontrar o equilíbrio entre a complexidade teórica e a acessibilidade pedagógica é o grande desafio de quem leciona História para os anos finais do…",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/03/cidadaniabrasil.png",
+   "etapa": [],
+   "area": [
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "História do Brasil",
+    "Conceitos",
+    "Material Didático"
+   ],
+   "data": "2026-03-20T18:14:09.000Z"
+  },
+  {
+   "slug": "o-tempo-para-os-povos-bantu-kongo",
+   "titulo": "O tempo para os povos Bantu-Kongo",
+   "descricao": "Baixe grátis nosso kit pedagógico completo sobre Tempo e História! Inclui apostila exclusiva com a visão linear ocidental e o ciclo Bantu-Kongo…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/03/tempo.png",
+   "etapa": [],
+   "area": [],
+   "rotulos": [
+    "Conceitos",
+    "Ensino de História",
+    "Material Didático",
+    "metodologias ativas ensino de história"
+   ],
+   "data": "2026-03-13T19:09:49.000Z"
+  },
+  {
+   "slug": "o-crime-da-baronesa-de-grajau",
+   "titulo": "O Crime da Baronesa de Grajaú",
+   "descricao": "Em 1876 um caso provocou grande repercussão em São Luís do Maranhão. Anna Rosa Vianna Ribeiro, membro da elite política da região, tentou ocultar as…",
+   "tipo": "planos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/03/inocencio2.png",
+   "etapa": [],
+   "area": [
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "Fontes Históricas",
+    "História do Brasil",
+    "escravidão",
+    "Material Didático"
+   ],
+   "data": "2026-03-04T19:30:46.000Z"
+  },
+  {
+   "slug": "a-invencao-da-escrita-uma-proposta-pedagogica-baseada-no-dua",
+   "titulo": "A Invenção da Escrita: Uma Proposta Pedagógica Baseada no DUA",
+   "descricao": "Conheça o recurso didático sobre a invenção da escrita, desenvolvido no âmbito do Projeto Isidoro para atuar como um suporte complementar fundamental na…",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-antiga"
+   ],
+   "rotulos": [
+    "Antiguidade",
+    "educação inclusiva",
+    "História Antiga",
+    "Material Didático"
+   ],
+   "data": "2026-02-12T19:56:51.000Z"
+  },
+  {
+   "slug": "estrategia-pedagogica-fortalecendo-a-leitura-atenta-e-a-interpretacao-para-o-enem",
+   "titulo": "Estratégia Pedagógica: Fortalecendo a Leitura Atenta e a Interpretação para o ENEM",
+   "descricao": "Em resposta à dificuldade de interpretação e concentração no ENEM 2025, esta postagem oferece uma atividade avaliativa estruturada sobre a Primeira…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2025/11/pexels-photo-26570843.jpg",
+   "etapa": [],
+   "area": [
+    "historia-contemporanea"
+   ],
+   "rotulos": [
+    "ENEM",
+    "história contemporânea",
+    "Material Didático"
+   ],
+   "data": "2025-11-13T20:10:54.000Z"
+  },
+  {
+   "slug": "atividade-adaptada-revolucao-industrial-8o-periodo",
+   "titulo": "Atividade adaptada – Revolução Industrial (8º período)",
+   "descricao": "Baixe uma atividade de História sobre a Revolução Industrial, adaptada para o 8º período. Com exercícios visuais e interativos, este material promove a…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2025/09/image.png",
+   "etapa": [
+    "eja"
+   ],
+   "area": [
+    "historia-moderna"
+   ],
+   "rotulos": [
+    "atividade adaptada",
+    "educação inclusiva",
+    "História moderna"
+   ],
+   "data": "2025-09-18T18:10:58.000Z"
+  },
+  {
+   "slug": "compreendendo-as-transformacoes-do-estado-brasileiro-a-partir-da-proclamacao-da-republica",
+   "titulo": "Compreendendo as Transformações do Estado Brasileiro a partir da Proclamação da República",
+   "descricao": "Descubra as verdadeiras transformações do Brasil em um material que vai além da cronologia! Nosso guia de estudos compara as Constituições do Império e…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "História do Brasil",
+    "Brasil Republicano",
+    "Conceitos",
+    "Material Didático"
+   ],
+   "data": "2025-08-07T19:55:13.000Z"
+  },
+  {
+   "slug": "atividade-especial-gamificada-o-parque-nacional-serra-da-capivara",
+   "titulo": "Atividade especial gamificada – O Parque Nacional Serra da Capivara",
+   "descricao": "Explore com os seus alunos a pré-história brasileira com esse recurso exclusivo e disponível gratuitamente!",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2025/07/niede-1024x683-1.png",
+   "etapa": [],
+   "area": [
+    "historia-antiga",
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "Fontes Históricas",
+    "História do Brasil",
+    "História da América",
+    "Niède Guidon",
+    "pré-história"
+   ],
+   "data": "2025-07-04T19:39:12.000Z"
+  },
+  {
+   "slug": "a-revolucao-francesa",
+   "titulo": "A Revolução Francesa",
+   "descricao": "Explore um material resumido sobre a Revolução Francesa!",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-moderna"
+   ],
+   "rotulos": [
+    "História moderna"
+   ],
+   "data": "2025-06-05T19:28:40.000Z"
+  },
+  {
+   "slug": "aprenda-sobre-a-historia-da-humanidade-com-nosso-material-gratuito",
+   "titulo": "Aprenda sobre a História da Humanidade com nosso Material Gratuito",
+   "descricao": "A espécie humana surgiu na África há milhares de anos. De lá, nossos ancestrais migraram para outros continentes, desenvolvendo ferramentas e adaptações…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [
+    "eja"
+   ],
+   "area": [],
+   "rotulos": [
+    "EducaçãoCientífica",
+    "EJA",
+    "HistóriaHumana"
+   ],
+   "data": "2025-03-31T16:44:35.000Z"
+  },
+  {
+   "slug": "material-adaptado-respeito-diversidade-e-perseveranca",
+   "titulo": "Material adaptado – respeito, diversidade e perseverança",
+   "descricao": "Em um ambiente educacional inclusivo, a valorização da união, diversidade e perseverança fortalece vínculos e promove um aprendizado acolhedor. Esta…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2025/03/montessori.png",
+   "etapa": [],
+   "area": [],
+   "rotulos": [
+    "EducaçãoInclusiva",
+    "Material Didático"
+   ],
+   "data": "2025-03-28T17:43:26.000Z"
+  },
+  {
+   "slug": "a-influencia-da-jihad-na-africa-ocidental-e-a-revolta-dos-males",
+   "titulo": "A Influência da Jihad na África Ocidental e a Revolta dos Malês",
+   "descricao": "Descubra como uma jihad na África Ocidental impactou diretamente a história do Brasil! A Revolta dos Malês, em 1835, não foi um evento isolado, mas parte…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2025/03/califadosokotocapa-1.png",
+   "etapa": [],
+   "area": [
+    "historia-do-brasil",
+    "historia-da-africa"
+   ],
+   "rotulos": [
+    "História da África",
+    "História do Brasil",
+    "#EducaçãoHistórica",
+    "#HistóriaDaÁfrica",
+    "#RevoltaDosMalês"
+   ],
+   "data": "2025-03-21T18:55:17.000Z"
+  },
+  {
+   "slug": "questoes-sobre-os-povos-indigenas",
+   "titulo": "Questões sobre os povos indígenas",
+   "descricao": "A Lei 11.645/2008 tornou obrigatório o ensino da história e cultura indígena nas escolas, ampliando a visibilidade do tema em vestibulares e concursos…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "História do Brasil",
+    "Concursos",
+    "povos indígenas",
+    "vestibulares"
+   ],
+   "data": "2025-03-13T15:23:19.000Z"
+  },
+  {
+   "slug": "mineracao-no-brasil-colonial-um-material-adaptado-e-acessivel",
+   "titulo": "Mineração no Brasil Colonial: Um Material Adaptado e Acessível",
+   "descricao": "Este material aborda a mineração no Brasil colonial de forma clara e inclusiva",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-moderna",
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "História do Brasil",
+    "História moderna",
+    "Material Didático",
+    "Mineração"
+   ],
+   "data": "2025-02-14T19:40:31.000Z"
+  },
+  {
+   "slug": "rugendas-memorias-da-escravidao",
+   "titulo": "Rugendas – Memórias da Escravidão",
+   "descricao": "Johann Moritz Rugendas foi um artista alemão que, entre 1822 e 1825, participou de uma expedição científica ao Brasil, onde documentou, através de suas…",
+   "tipo": "planos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2024/08/rugendas-memorias-da-escravidao-post-para-instagram.png",
+   "etapa": [],
+   "area": [],
+   "rotulos": [
+    "Fontes Históricas",
+    "#ArteHistórica",
+    "#ExpediçãoLangsdorff",
+    "#HistóriaDoBrasi",
+    "#Rugendas"
+   ],
+   "data": "2024-08-30T00:13:56.000Z"
+  },
+  {
+   "slug": "ensinando-a-pre-historia-desafios-e-estrategias-eficazes",
+   "titulo": "Ensinando a Pré-História: Desafios e Estratégias Eficazes",
+   "descricao": "Ensinar a pré-história pode ser um grande desafio para professores, especialmente porque se trata de um período tão distante e abstrato para os alunos…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-antiga"
+   ],
+   "rotulos": [
+    "linha do tempo",
+    "metodologias ativas ensino de história",
+    "pré-história"
+   ],
+   "data": "2024-08-23T19:10:27.000Z"
+  },
+  {
+   "slug": "o-desenho-universal-para-a-aprendizagem-e-um-material-didatico-gratuito",
+   "titulo": "O Desenho Universal para a Aprendizagem e um material didático gratuito",
+   "descricao": "Felizmente, as políticas públicas voltadas para a educação têm se dedicado cada vez mais a promover a inclusão. Se há alguns anos jovens com necessidades…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [],
+   "rotulos": [
+    "AprendizagemParaTodos",
+    "DesenhoUniversal",
+    "EducaçãoInclusiva"
+   ],
+   "data": "2024-08-20T14:22:55.000Z"
+  },
+  {
+   "slug": "a-historia-da-rainha-njinga-a-mbande-em-quadrinhos",
+   "titulo": "A história da rainha Njinga a Mbande em quadrinhos",
+   "descricao": "A história é fundamental para o desenvolvimento. Conhecer a própria história desperta o senso de pertencimento e a vontade de contribuir e defender a…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-moderna",
+    "historia-da-africa"
+   ],
+   "rotulos": [
+    "História moderna",
+    "África",
+    "CulturaAfro",
+    "História da África",
+    "MaterialEducacional",
+    "Metodologias Ativas"
+   ],
+   "data": "2024-08-14T16:59:05.000Z"
+  },
+  {
+   "slug": "desafio-interdisciplinar-de-historia-e-geografia",
+   "titulo": "Desafio interdisciplinar de história e geografia",
+   "descricao": "Boas notícias! Na última semana, dediquei-me com mais atenção às redes sociais. Os resultados estão começando a aparecer. Para comemorar, decidi publicar…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/05/academia-isidoro-6a036c94490d0.png",
+   "etapa": [],
+   "area": [
+    "historia-moderna",
+    "geografia"
+   ],
+   "rotulos": [
+    "Gameficação",
+    "Geografia",
+    "História moderna"
+   ],
+   "data": "2024-08-12T17:56:47.000Z"
+  },
+  {
+   "slug": "material-didatico-de-historia-antiga-para-jovens-estrategias-e-recursos",
+   "titulo": "Material Didático de História Antiga para Jovens: Estratégias e Recursos",
+   "descricao": "O currículo de História na educação básica brasileira, muitas vezes centrado na cronologia, pode ser desafiador, especialmente ao abordar temas complexos…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2024/08/1.png",
+   "etapa": [],
+   "area": [
+    "historia-antiga"
+   ],
+   "rotulos": [
+    "Antiguidade",
+    "BNCC História",
+    "Caça-Palavras Educativo",
+    "Ensino de História",
+    "Estratégias Educacionais",
+    "História Antiga",
+    "Metodologias Ativas"
+   ],
+   "data": "2024-08-07T19:39:32.000Z"
+  },
+  {
+   "slug": "historia-da-africa-e-cultura-afro-brasileira",
+   "titulo": "História da África e Cultura Afro-Brasileira",
+   "descricao": "Conheça nosso material especial sobre a História da África e Cultura Afro-Brasileira! São duas apresentações, com um total de 40 slides explicativos!",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2024/08/africa1.jpg",
+   "etapa": [],
+   "area": [
+    "historia-da-africa"
+   ],
+   "rotulos": [
+    "África",
+    "Cultura Afro-Brasileira",
+    "História",
+    "Material Didático"
+   ],
+   "data": "2024-08-06T14:41:28.000Z"
+  }
+ ]
+}
