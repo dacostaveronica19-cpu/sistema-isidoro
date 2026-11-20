@@ -1,0 +1,52 @@
+name: Atualizar páginas dos materiais
+
+# Lê os posts do blog Academia Isidoro e gera uma página para cada material
+# em /materiais/, além de sitemap.xml e robots.txt.
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/atualizar-materiais.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-materiais
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Gerar páginas
+        run: node scripts/build-materiais.mjs
+
+      - name: Publicar mudanças
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A materiais sitemap.xml robots.txt
+          if git diff --cached --quiet; then
+            echo "Nada mudou."
+          else
+            git commit -m "Atualiza páginas dos materiais"
+            git push
+          fi
