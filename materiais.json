@@ -7,7 +7,7 @@
     {
      "slug": "eja",
      "nome": "EJA",
-     "total": 5
+     "total": 6
     }
    ]
   },
@@ -28,12 +28,12 @@
     {
      "slug": "historia-contemporanea",
      "nome": "História Contemporânea",
-     "total": 3
+     "total": 4
     },
     {
      "slug": "historia-do-brasil",
      "nome": "História do Brasil",
-     "total": 9
+     "total": 10
     },
     {
      "slug": "historia-da-africa",
@@ -69,12 +69,32 @@
     {
      "slug": "recursos",
      "nome": "Recurso especial",
-     "total": 7
+     "total": 8
     }
    ]
   }
  ],
  "materiais": [
+  {
+   "slug": "brasil-contemporaneo-constituicao-de-1988-estado-brasileiro-e-cidadania",
+   "titulo": "Brasil Contemporâneo: Constituição de 1988, Estado Brasileiro e Cidadania",
+   "descricao": "Caderno do Estudante e Manual do Professor em PDF sobre a Constituição de 1988, o Estado brasileiro e a cidadania, para o 9º ano e a EJA.",
+   "tipo": "recursos",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/11/01_capa_caderno_estudante.png",
+   "etapa": [
+    "eja"
+   ],
+   "area": [
+    "historia-contemporanea",
+    "historia-do-brasil"
+   ],
+   "rotulos": [
+    "História do Brasil",
+    "EJA",
+    "história contemporânea"
+   ],
+   "data": "2026-11-24T17:49:27.000Z"
+  },
   {
    "slug": "historia-na-eja-conheca-a-colecao-completa-do-6o-periodo-elaborada-pelo-sistema-isidoro",
    "titulo": "História na EJA – conheça a coleção completa do 6º período elaborada pelo Sistema Isidoro",

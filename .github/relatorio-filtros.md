@@ -3,11 +3,11 @@
 Gerado pela rotina de atualização. Mostra como os materiais do blog foram classificados em `config/filtros.json`.
 
 ## Materiais por filtro
-**Etapa ou modalidade**: EJA (5)
+**Etapa ou modalidade**: EJA (6)
 
-**Área ou período**: História Antiga (5), História Moderna (5), História Contemporânea (3), História do Brasil (9), História da África (3), Geografia (2), Computação (1)
+**Área ou período**: História Antiga (5), História Moderna (5), História Contemporânea (4), História do Brasil (10), História da África (3), Geografia (2), Computação (1)
 
-**Tipo de material**: Plano de aula (5), Material gratuito (19), Recurso especial (7)
+**Tipo de material**: Plano de aula (5), Material gratuito (19), Recurso especial (8)
 
 ## Sem etapa ou modalidade (26)
 - O enigma do Homem de Gelo: um jogo para aprender como a ciência chega a uma conclusão (material gratuito)
