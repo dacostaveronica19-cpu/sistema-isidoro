@@ -5,7 +5,7 @@
   const CAT = window.IBNCC_CATALOGO;
   const REG = {};
   window.IBNCC_REGISTRAR = (id, obj) => { REG[id] = Object.assign({ id }, obj); };
-  const VERSAO_APP = '0.3 (teste)';
+  const VERSAO_APP = '0.4 (teste)';
 
   // ---------- utilidades ----------
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -28,6 +28,7 @@
     return null;
   }
   const disponivel = (a) => a && a.componentes.length > 0;
+  const disponiveis = () => lista(CAT.etapas.flatMap((e) => e.anos.filter(disponivel).map((a) => lista(a.componentes.map((c) => c.nome)) + ' do ' + a.nome)));
 
   // ---------- carregamento dos dados de um ano ----------
   function carregarScript(arquivo) {
@@ -318,7 +319,7 @@
     tela.innerHTML = `
       <p class="rotulo">Sobre o aplicativo</p>
       <h1>I-BNCC</h1>
-      <p class="descricao">A BNCC em formato de aplicativo, para consulta rápida e acompanhamento do que foi trabalhado em sala. Esta versão de teste traz Língua Portuguesa e Matemática do 1º ano do Ensino Fundamental, com as habilidades de Computação integradas de forma transversal. As demais disciplinas e anos estão em preparação.</p>
+      <p class="descricao">A BNCC em formato de aplicativo, para consulta rápida e acompanhamento do que foi trabalhado em sala. Esta versão de teste traz ${esc(disponiveis())}, com as habilidades de Computação integradas de forma transversal. As demais disciplinas e anos estão em preparação.</p>
       <div class="botoes" style="margin-bottom:12px"><a class="btn" href="#/escolher">Trocar etapa, ano ou disciplina</a></div>
 
       <div class="cartao">
