@@ -5,7 +5,7 @@
   const CAT = window.IBNCC_CATALOGO;
   const REG = {};
   window.IBNCC_REGISTRAR = (id, obj) => { REG[id] = Object.assign({ id }, obj); };
-  const VERSAO_APP = '0.8 (teste)';
+  const VERSAO_APP = '0.9 (teste)';
 
   // ---------- utilidades ----------
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -229,7 +229,7 @@
     const ft = comp.trilha.filter((c) => nivel(c)).length;
     const cos = Object.keys(CO); const fc = cos.filter(coTrabalhada).length;
     const bloco = (n, t, r) => `<div><b>${n}/${t}</b><span>${r}</span><div class="barra"><i style="width:${pct(n, t)}%"></i></div></div>`;
-    return `<div class="resumo">${bloco(fb, bim.length, 'Nos bimestres')}${bloco(ft, comp.trilha.length, 'Trilha contínua')}${cos.length ? bloco(fc, cos.length, 'Computação') : ''}</div>`;
+    return `<div class="resumo">${bloco(fb, bim.length, 'Nos bimestres')}${comp.trilha.length ? bloco(ft, comp.trilha.length, 'Trilha contínua') : ''}${cos.length ? bloco(fc, cos.length, 'Computação') : ''}</div>`;
   }
 
   function trocaDisciplina() {
@@ -275,11 +275,11 @@
       <div class="lista">${b.hab.map((c) => cartaoBimestre(c)).join('')}</div>
       ${b.co.length && Object.keys(CO).length ? `<h3>Computação em destaque neste bimestre</h3><div class="lista">${b.co.map(cartaoCO).join('')}</div>` : ''}
       ${(() => { const ps = PONTES.filter((p) => (p.bimestre === n || p.bimestre === 'ano') && p.habilidades.some((x) => HAB[x.cod] && HAB[x.cod].comp === comp)); return ps.length ? `<h3>Pontes com outras disciplinas</h3><p class="fonte" style="margin-top:-4px">Situações de sala que trabalham habilidades de várias disciplinas ao mesmo tempo.</p>${ps.map((p) => blocoPonte(p, false)).join('')}` : ''; })()}
-      <a class="cartao cartao-link" href="#/trilha">
+      ${comp.trilha.length ? `<a class="cartao cartao-link" href="#/trilha">
         <div><p class="rotulo">Em todos os bimestres</p><b class="serif" style="font-size:20px">Trilha contínua</b>
         <div class="fonte">${tr} de ${comp.trilha.length} habilidades com algum nível marcado</div></div>
         <span class="seta">→</span>
-      </a>`;
+      </a>` : ''}`;
   }
   const ultimoBimestre = () => Number(ler('ibncc:bimestre', 1)) || 1;
 
@@ -291,7 +291,7 @@
       ${trocaDisciplina()}
       <p class="rotulo">Em todos os bimestres</p>
       <h1>Trilha contínua · ${esc(comp.nome)}</h1>
-      <p class="descricao">${esc(comp.trilha_descricao)} Um novo toque no nível escolhido desfaz a marcação.</p>
+      ${comp.trilha.length ? `<p class="descricao">${esc(comp.trilha_descricao)} Um novo toque no nível escolhido desfaz a marcação.</p>` : `<p class="vazio">${esc(comp.trilha_descricao)} Por isso, ${esc(comp.nome)} não tem trilha contínua no ${esc(ANO.nome)}: as marcações ficam na aba Bimestres.</p>`}
       ${Object.keys(grupos).map((k) => `<h2>${esc(k)}</h2><div class="lista">${grupos[k].map((c) => cartaoTrilha(c)).join('')}</div>`).join('')}`;
   }
 
