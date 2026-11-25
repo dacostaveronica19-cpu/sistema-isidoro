@@ -166,3 +166,22 @@ dl.ficha dd { margin: 0; }
 .aviso-toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(var(--abas-altura) + 16px + env(safe-area-inset-bottom)); background: var(--tinta); color: #fff; padding: 10px 16px; border-radius: 12px; font-size: 14px; z-index: 60; max-width: 90vw; text-align: center; }
 .vazio { color: var(--texto-suave); text-align: center; padding: 24px 0; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* v0.3: escolha de etapa, ano e disciplina */
+a.contexto { text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+a.contexto::after { content: "▾"; font-size: 11px; opacity: .7; }
+.disciplinas { display: flex; gap: 6px; overflow-x: auto; margin: 0 0 14px; padding-bottom: 2px; scrollbar-width: none; }
+.disciplinas a { flex: none; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--borda); background: #fff; color: var(--texto); text-decoration: none; font-size: 14px; font-weight: 600; }
+.disciplinas a[aria-current="page"] { background: var(--salvia); border-color: var(--salvia); color: #fff; }
+.disciplinas a.mais { color: var(--texto-suave); font-weight: 500; }
+.selo-comp { background: #eef0ec; color: var(--salvia-escuro); }
+.etapa { margin-bottom: 14px; }
+.etapa.foco { border-color: var(--salvia); box-shadow: 0 0 0 2px rgba(90,124,111,.18); }
+.anos { display: grid; gap: 8px; }
+.ano-item { border: 1px solid var(--borda); border-radius: 12px; padding: 10px 12px; display: grid; gap: 6px; background: #fff; }
+.ano-item > b { font-family: 'Crimson Text', Georgia, serif; font-size: 18px; }
+.ano-item.indisponivel { display: flex; justify-content: space-between; align-items: center; background: transparent; opacity: .6; }
+.ano-item.indisponivel span { font-size: 12px; }
+.ano-comps { display: flex; flex-wrap: wrap; gap: 6px; }
+.ano-comps a { padding: 7px 12px; border-radius: 999px; background: var(--salvia); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; }
+.sem-ano .abas { display: none; }

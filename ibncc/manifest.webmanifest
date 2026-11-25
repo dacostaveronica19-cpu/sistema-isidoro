@@ -1,0 +1,33 @@
+{
+  "id": "./",
+  "name": "I-BNCC · BNCC digital para professores",
+  "short_name": "I-BNCC",
+  "description": "Habilidades da BNCC organizadas por bimestre, com marcação do que foi trabalhado e Computação integrada às disciplinas.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8f8f7",
+  "theme_color": "#5a7c6f",
+  "icons": [
+    {
+      "src": "icons/icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
