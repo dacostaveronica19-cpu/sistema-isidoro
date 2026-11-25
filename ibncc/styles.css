@@ -150,8 +150,8 @@ dl.ficha dd { margin: 0; }
 .marcacao-grande[aria-checked="true"] .caixa svg { opacity: 1; }
 
 /* Abas inferiores */
-.abas { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: #fff; border-top: 1px solid var(--borda); display: grid; grid-template-columns: repeat(5, 1fr); height: calc(var(--abas-altura) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); }
-.abas a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: 11px; font-weight: 600; color: var(--texto-suave); text-decoration: none; }
+.abas { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: #fff; border-top: 1px solid var(--borda); display: grid; grid-template-columns: repeat(6, 1fr); height: calc(var(--abas-altura) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); }
+.abas a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: 10.5px; min-width: 0; font-weight: 600; color: var(--texto-suave); text-decoration: none; }
 .abas svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .abas a[aria-current="page"] { color: var(--salvia); }
 
@@ -202,3 +202,47 @@ a.contexto::after { content: "▾"; font-size: 11px; opacity: .7; }
 .ponte-habs li.destaque { background: #f3e9f7; }
 .ponte-habs button { border: 0; background: none; padding: 0; font: inherit; font-weight: 700; color: var(--salvia-escuro); cursor: pointer; }
 .ponte-papel { flex-basis: 100%; font-size: 14px; }
+
+/* v0.8 · turmas, planejamentos e relatórios */
+.form label { display: block; font-size: 13px; font-weight: 600; color: var(--tinta); margin: 0 0 12px; }
+.form input[type="text"], .form input[type="date"], .form input[type="month"], .form select, .form textarea {
+  display: block; width: 100%; margin-top: 5px; font: inherit; font-weight: 400; font-size: 15px; color: var(--tinta);
+  padding: 10px 12px; border: 1px solid var(--borda); border-radius: 10px; background: #fff; box-sizing: border-box; }
+.form textarea { resize: vertical; line-height: 1.45; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--salvia); border-color: transparent; }
+.form .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--salvia-suave); border-radius: 10px; padding: 3px; margin-bottom: 14px; }
+.seg button { border: 0; background: transparent; padding: 9px; border-radius: 8px; font: inherit; font-weight: 600; color: var(--texto); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: #fff; color: var(--salvia-escuro); box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+.btn-peq { padding: 6px 10px; font-size: 13px; }
+.lista-turmas { display: grid; gap: 8px; }
+.turma { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--borda); border-radius: var(--raio); padding: 12px 14px; }
+.turma.ativa { border-color: var(--salvia); box-shadow: inset 3px 0 0 var(--salvia); }
+.turma-acoes { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+.turma-acoes .btn { padding: 6px 10px; font-size: 13px; }
+.plano-item { margin-bottom: 8px; }
+.pl-grupo { border-top: 1px solid var(--borda-suave); padding: 6px 0; }
+.pl-grupo summary { cursor: pointer; font-weight: 600; color: var(--tinta); padding: 6px 0; }
+.pl-hab { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; font-size: 14px; line-height: 1.4; cursor: pointer; }
+.pl-hab input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--salvia); flex-shrink: 0; }
+.pl-hab b { color: var(--salvia-escuro); }
+.rel-item { background: #fff; border: 1px solid var(--borda); border-radius: 12px; padding: 10px 12px; margin-bottom: 6px; font-size: 14px; line-height: 1.4; }
+.link { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: var(--salvia-escuro); cursor: pointer; text-decoration: underline; }
+#impressao { display: none; }
+@media print {
+  @page { size: A4; margin: 18mm 16mm; }
+  body.imprimindo > *:not(#impressao) { display: none !important; }
+  body.imprimindo { background: #fff; padding: 0 !important; }
+  body.imprimindo #impressao { display: block; font-family: Inter, Arial, sans-serif; font-size: 10.5pt; color: #222; line-height: 1.4; }
+  #impressao h1 { font-family: 'Crimson Text', Georgia, serif; color: #3f5b50; font-size: 20pt; margin: 0 0 2pt; }
+  #impressao h2 { font-family: 'Crimson Text', Georgia, serif; color: #3f5b50; font-size: 14pt; margin: 14pt 0 5pt; break-after: avoid; }
+  #impressao h3 { font-size: 11pt; margin: 10pt 0 4pt; break-after: avoid; }
+  #impressao .imp-sub { color: #6b6a66; margin: 0 0 10pt; }
+  #impressao .imp-forte { font-weight: 700; }
+  #impressao .imp-nota { font-style: italic; color: #6b6a66; font-size: 9pt; margin-top: 14pt; }
+  #impressao table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 4pt 0 8pt; }
+  #impressao th, #impressao td { border: 0.6pt solid #bfbfbf; padding: 4pt 5pt; text-align: left; vertical-align: top; word-wrap: break-word; }
+  #impressao th { background: #e8efec; color: #3f5b50; }
+  #impressao .imp-kv td:first-child { font-weight: 700; }
+  #impressao tr { break-inside: avoid; }
+}
