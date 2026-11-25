@@ -5,7 +5,7 @@
   const CAT = window.IBNCC_CATALOGO;
   const REG = {};
   window.IBNCC_REGISTRAR = (id, obj) => { REG[id] = Object.assign({ id }, obj); };
-  const VERSAO_APP = '0.4 (teste)';
+  const VERSAO_APP = '0.5 (teste)';
 
   // ---------- utilidades ----------
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -44,7 +44,7 @@
 
   // índice do ano carregado
   let ANO = null; // { id, nome, comps: [comp], co: {cod: h} }
-  let HAB = {}, CO = {}, VINC_HAB = {}, VINC_CO = {}, MAT = {}, BIM_DE = {}, CO_BIM = {};
+  let HAB = {}, CO = {}, VINC_HAB = {}, VINC_CO = {}, MAT = {}, BIM_DE = {}, CO_BIM = {}, PONTES = [], PONTES_DE = {};
   const ESTADO = {}; // chave -> { marcadas, trilha, atualizado }
   const NIVEIS = [{ id: 'iniciada', rotulo: 'Iniciada' }, { id: 'em_desenvolvimento', rotulo: 'Em desenvolvimento' }, { id: 'trabalhada_no_ano', rotulo: 'Trabalhada no ano' }];
 
@@ -70,6 +70,8 @@
       }
     });
     if (a.co) REG[a.co].habilidades.forEach((h) => { CO[h.codigo] = h; });
+    PONTES = a.pontes && REG[a.pontes] ? REG[a.pontes].pontes : []; PONTES_DE = {};
+    PONTES.forEach((p) => p.habilidades.forEach((x) => { (PONTES_DE[x.cod] = PONTES_DE[x.cod] || []).push(p); }));
     ANO = { id: a.id, nome: a.nome, comps };
   }
 
@@ -80,7 +82,7 @@
   function selecionar(anoId, compId) {
     const r = acharAno(anoId);
     if (!r || !disponivel(r.ano)) return Promise.reject(new Error('indisponível'));
-    const arquivos = r.ano.componentes.map((c) => c.arquivo).concat(r.ano.co ? [r.ano.co] : []);
+    const arquivos = r.ano.componentes.map((c) => c.arquivo).concat(r.ano.co ? [r.ano.co] : [], r.ano.pontes ? [r.ano.pontes] : []);
     tela.innerHTML = '<p class="vazio">Carregando…</p>';
     return Promise.all(arquivos.map(carregarScript)).then(() => {
       indexarAno(r.ano);
@@ -129,6 +131,7 @@
   function selosHab(c) {
     let s = '';
     (VINC_HAB[c] || []).forEach((v) => { s += `<span class="selo selo-co">${esc(v.co)}</span>`; });
+    const np = (PONTES_DE[c] || []).length; if (np) s += `<span class="selo selo-ponte">${np} ponte${np > 1 ? 's' : ''}</span>`;
     (MAT[c] || []).forEach((m) => { s += seloAcesso(m); });
     return s;
   }
@@ -178,6 +181,29 @@
       </button>
       ${vs.length ? `<div style="padding:0 14px 12px"><div class="fonte">Habilidades vinculadas (${esc(lista([...new Set(vs.map((v) => v.comp.curto))]))}):</div><div class="via">${via}</div></div>` : ''}
     </div>`;
+  }
+
+  // ---------- pontes entre disciplinas ----------
+  const existe = (c) => !!(HAB[c] || CO[c]);
+  const discDe = (c) => (CO[c] ? 'Computação' : HAB[c].comp.curto);
+  const feito = (c) => (CO[c] ? coTrabalhada(c) : trabalhada(c));
+  function discsPonte(p) { return [...new Set(p.habilidades.filter((x) => existe(x.cod)).map((x) => discDe(x.cod)))]; }
+  function blocoPonte(p, aberto, destaque) {
+    const hs = p.habilidades.filter((x) => existe(x.cod));
+    const quando = p.bimestre === 'ano' ? 'Ao longo do ano' : `Sugestão: ${p.bimestre}º bimestre`;
+    return `<details class="ponte"${aberto ? ' open' : ''}>
+      <summary><span class="ponte-titulo">${esc(p.titulo)}</span><span class="ponte-discs">${discsPonte(p).map((d) => `<span class="selo selo-comp">${esc(d)}</span>`).join('')}<span class="selo selo-sugestao">${quando}</span></span></summary>
+      <p class="ponte-ideia">${esc(p.ideia)}</p>
+      <p class="rotulo" style="margin:10px 0 4px">Como fazer a ponte</p>
+      <p>${esc(p.como)}</p>
+      <p class="rotulo" style="margin:10px 0 4px">Habilidades envolvidas</p>
+      <ul class="ponte-habs">${hs.map((x) => `<li${x.cod === destaque ? ' class="destaque"' : ''}><button data-abrir="${x.cod}">${x.cod}${feito(x.cod) ? ' ✓' : ''}</button> <span class="selo selo-comp">${esc(discDe(x.cod))}</span><span class="ponte-papel">${esc(x.papel)}</span></li>`).join('')}</ul>
+    </details>`;
+  }
+  function secaoPontes(c) {
+    const ps = PONTES_DE[c] || [];
+    if (!ps.length) return '';
+    return '<h3>Pontes com outras disciplinas <span class="selo selo-sugestao">Sugestão</span></h3>' + ps.map((p) => blocoPonte(p, ps.length === 1, c)).join('');
   }
 
   function resumo(comp) {
@@ -231,6 +257,7 @@
       <h3>Habilidades do bimestre</h3>
       <div class="lista">${b.hab.map((c) => cartaoBimestre(c)).join('')}</div>
       ${b.co.length && Object.keys(CO).length ? `<h3>Computação em destaque neste bimestre</h3><div class="lista">${b.co.map(cartaoCO).join('')}</div>` : ''}
+      ${(() => { const ps = PONTES.filter((p) => (p.bimestre === n || p.bimestre === 'ano') && p.habilidades.some((x) => HAB[x.cod] && HAB[x.cod].comp === comp)); return ps.length ? `<h3>Pontes com outras disciplinas</h3><p class="fonte" style="margin-top:-4px">Situações de sala que trabalham habilidades de várias disciplinas ao mesmo tempo.</p>${ps.map((p) => blocoPonte(p, false)).join('')}` : ''; })()}
       <a class="cartao cartao-link" href="#/trilha">
         <div><p class="rotulo">Em todos os bimestres</p><b class="serif" style="font-size:20px">Trilha contínua</b>
         <div class="fonte">${tr} de ${comp.trilha.length} habilidades com algum nível marcado</div></div>
@@ -325,7 +352,7 @@
       <div class="cartao">
         <h3 style="margin-top:0">O que é oficial e o que é sugestão</h3>
         <p><span class="selo selo-oficial">Texto oficial</span> O texto das habilidades e as informações que as acompanham (campos de atuação, práticas de linguagem, unidades temáticas, objetos de conhecimento) foram transcritos da BNCC (BRASIL, 2018) e da BNCC Computação (BRASIL, 2022), com a página de origem indicada em cada habilidade.</p>
-        <p><span class="selo selo-sugestao">Sugestão</span> A BNCC não distribui habilidades por bimestre. A divisão em bimestres, a trilha contínua, os vínculos com Computação e as explicações "O que se espera" são uma proposta do Sistema Isidoro.</p>
+        <p><span class="selo selo-sugestao">Sugestão</span> A BNCC não distribui habilidades por bimestre. A divisão em bimestres, a trilha contínua, as pontes entre disciplinas, os vínculos com Computação e as explicações "O que se espera" são uma proposta do Sistema Isidoro.</p>
         <p class="fonte">O I-BNCC não é um aplicativo oficial do Ministério da Educação (MEC).</p>
       </div>
 
@@ -399,7 +426,7 @@
         <div class="vinculo"><button data-abrir="${v.co}">${v.co} →</button> <span class="fonte">${esc(CO[v.co].eixo)}</span>
         <p style="margin:6px 0 4px">${esc(CO[v.co].texto)}</p><p class="fonte" style="margin:0"><b>Por que se relacionam:</b> ${esc(v.justificativa)}</p></div>`).join('');
     }
-    return html + blocoMateriais(c);
+    return html + secaoPontes(c) + blocoMateriais(c);
   }
 
   function detalheCO(c) {
@@ -420,6 +447,7 @@
       <div class="explica"><p class="rotulo">Texto oficial</p><h3 style="margin-top:4px">Explicação da habilidade</h3><p>${esc(h.explicacao)}</p><p><b>Exemplos</b></p><p>${esc(h.exemplos)}</p></div>
       <p class="rotulo" style="margin-top:18px">Habilidades vinculadas</p>
       ${porComp}
+      ${secaoPontes(c)}
       ${blocoMateriais(c)}`;
   }
 

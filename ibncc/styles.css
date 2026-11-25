@@ -185,3 +185,20 @@ a.contexto::after { content: "▾"; font-size: 11px; opacity: .7; }
 .ano-comps { display: flex; flex-wrap: wrap; gap: 6px; }
 .ano-comps a { padding: 7px 12px; border-radius: 999px; background: var(--salvia); color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; }
 .sem-ano .abas { display: none; }
+
+/* pontes entre disciplinas */
+.selo-ponte { background: #f3e9f7; color: #6a3d80; }
+.ponte { background: #fff; border: 1px solid var(--borda); border-left: 4px solid #8a5aa3; border-radius: 12px; padding: 12px 14px; margin: 8px 0; }
+.ponte summary { cursor: pointer; list-style: none; display: grid; gap: 6px; }
+.ponte summary::-webkit-details-marker { display: none; }
+.ponte summary::after { content: "Ver a ponte ▾"; font-size: 12px; color: #6a3d80; font-weight: 600; }
+.ponte[open] summary::after { content: "Fechar ▴"; }
+.ponte-titulo { font-family: 'Crimson Text', Georgia, serif; font-size: 19px; font-weight: 600; line-height: 1.2; }
+.ponte-discs { display: flex; flex-wrap: wrap; gap: 4px; }
+.ponte-ideia { font-style: italic; color: var(--texto-suave); }
+.ponte p { margin: 6px 0; }
+.ponte-habs { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.ponte-habs li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; padding: 6px 8px; border-radius: 8px; background: #faf9f7; }
+.ponte-habs li.destaque { background: #f3e9f7; }
+.ponte-habs button { border: 0; background: none; padding: 0; font: inherit; font-weight: 700; color: var(--salvia-escuro); cursor: pointer; }
+.ponte-papel { flex-basis: 100%; font-size: 14px; }
