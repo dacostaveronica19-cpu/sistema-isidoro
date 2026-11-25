@@ -5,7 +5,7 @@
   const CAT = window.IBNCC_CATALOGO;
   const REG = {};
   window.IBNCC_REGISTRAR = (id, obj) => { REG[id] = Object.assign({ id }, obj); };
-  const VERSAO_APP = '0.6 (teste)';
+  const VERSAO_APP = '0.7 (teste)';
 
   // ---------- utilidades ----------
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
