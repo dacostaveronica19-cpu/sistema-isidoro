@@ -1,7 +1,7 @@
 // Service worker do I-BNCC: guarda os arquivos do app para uso sem internet.
 // Os dados de cada ano (dados/*.js) são guardados quando o ano é aberto pela primeira vez.
 // Ao publicar uma nova versão, basta mudar o número abaixo.
-const VERSAO = 'ibncc-v0.5.0';
+const VERSAO = 'ibncc-v0.6.0';
 const ARQUIVOS = [
   './',
   './index.html',
