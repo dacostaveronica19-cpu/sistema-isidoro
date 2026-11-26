@@ -323,11 +323,17 @@ function getPostPrice(post) {
 const tag = Object.values(post.tags || {}).find(t => /^R\$\s?\d/.test(decodeEntities(t.name)));
 return tag ? decodeEntities(tag.name) : '';
 }
+function getBuyPlatform(href) {
+try {
+const host = new URL(href).hostname;
+if (/(^|\.)hotmart\.[a-z.]+$/.test(host)) return 'Hotmart';
+if (/(^|\.)kiwify\.(com\.br|app)$/.test(host)) return 'Kiwify';
+} catch (_) {}
+return '';
+}
 function getBuyUrl(post) {
 const doc = new DOMParser().parseFromString(String(post.content || ''), 'text/html');
-const link = Array.from(doc.querySelectorAll('a[href]')).find(a => {
-try { return /(^|\.)hotmart\.[a-z.]+$/.test(new URL(a.getAttribute('href')).hostname); } catch (_) { return false; }
-});
+const link = Array.from(doc.querySelectorAll('a[href]')).find(a => getBuyPlatform(a.getAttribute('href')));
 return link ? safeUrl(link.getAttribute('href')) : '';
 }
 function materialHref(post) {
@@ -345,7 +351,7 @@ const price = sectionKey === 'recursos' ? getPostPrice(post) : '';
 const buyUrl = sectionKey === 'recursos' ? getBuyUrl(post) : '';
 const btnBase = 'w-full inline-flex justify-center items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-opacity';
 const detailsBtn = `<a href="${materialHref(post)}" class="${btnBase} ${buyUrl ? 'border border-sage text-sage hover:bg-sage/5' : 'bg-sage text-white hover:opacity-90'}">${escapeHTML(ui.primary)}</a>`;
-const buyBtn = buyUrl ? `<a href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer" class="${btnBase} bg-sage text-white hover:opacity-90">Comprar na Hotmart<span class="sr-only"> (abre em nova aba)</span></a>` : '';
+const buyBtn = buyUrl ? `<a href="${escapeHTML(buyUrl)}" target="_blank" rel="noopener noreferrer" class="${btnBase} bg-sage text-white hover:opacity-90">Comprar na ${getBuyPlatform(buyUrl)}<span class="sr-only"> (abre em nova aba)</span></a>` : '';
 const priceLine = price ? `<p class="text-xl font-bold font-serif text-[#34322d]">${escapeHTML(price)}</p>` : '';
 return `
 <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
