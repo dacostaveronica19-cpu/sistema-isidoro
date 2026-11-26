@@ -56,11 +56,40 @@ function between(src, start, end, what) {
 }
 
 // ---------- posts ----------
+// Mapa slug -> slug da categoria-mãe, para que um post marcado só numa subcategoria
+// (por exemplo, "Anos Iniciais" dentro de "Materiais Didáticos") entre na seção certa.
+const PARENT_OF = new Map();
+function registerCategories(list) {
+  const byId = new Map(list.map((c) => [c.ID, c]));
+  for (const c of list) {
+    const parent = c.parent ? byId.get(c.parent) : null;
+    if (parent && parent.slug) PARENT_OF.set(c.slug, parent.slug);
+  }
+}
+async function loadCategories() {
+  const url = API.replace(/\/posts$/, '/categories') + '?number=1000';
+  try {
+    const res = await fetch(url, { headers: { 'User-Agent': 'sistema-isidoro-build' } });
+    if (!res.ok) throw new Error(`API respondeu ${res.status}`);
+    const data = await res.json();
+    registerCategories(Array.isArray(data.categories) ? data.categories : []);
+  } catch (err) {
+    console.warn(`Não foi possível ler a hierarquia de categorias (${err.message}). Posts marcados só numa subcategoria podem ficar de fora.`);
+  }
+}
+function ancestorsOf(slug) {
+  const chain = [slug];
+  while (PARENT_OF.has(chain[chain.length - 1]) && chain.length < 10) chain.push(PARENT_OF.get(chain[chain.length - 1]));
+  return chain;
+}
+
 async function loadPosts() {
   if (process.env.FIXTURE) {
     const data = JSON.parse(readFileSync(process.env.FIXTURE, 'utf8'));
+    if (!Array.isArray(data) && Array.isArray(data.categorias)) registerCategories(data.categorias);
     return Array.isArray(data) ? data : data.posts;
   }
+  await loadCategories();
   const posts = [];
   for (let page = 1; page <= 20; page++) {
     const url = `${API}?number=100&page=${page}&status=publish&order_by=date&order=DESC`;
@@ -75,7 +104,7 @@ async function loadPosts() {
 }
 
 function classify(post) {
-  const slugs = Object.values(post.categories || {}).map((c) => c.slug);
+  const slugs = Object.values(post.categories || {}).flatMap((c) => ancestorsOf(c.slug));
   return ['recursos', 'planos', 'downloads'].find((k) => slugs.includes(CATEGORIES[k])) || null;
 }
 const priceTag = (post) => {

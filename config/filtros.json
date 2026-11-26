@@ -5,6 +5,7 @@
       "titulo": "Etapa ou modalidade",
       "valores": [
         { "slug": "eja", "nome": "EJA", "aliases": ["EJA", "EJAI", "Educação de Jovens e Adultos", "6º período", "7º período", "8º período", "9º período"] },
+        { "slug": "anos-iniciais", "nome": "Anos Iniciais", "aliases": ["Anos Iniciais"] },
         { "slug": "6-ano", "nome": "6º ano", "aliases": ["6º ano", "6 ano", "sexto ano"] },
         { "slug": "7-ano", "nome": "7º ano", "aliases": ["7º ano", "7 ano", "sétimo ano"] },
         { "slug": "8-ano", "nome": "8º ano", "aliases": ["8º ano", "8 ano", "oitavo ano"] },
@@ -23,6 +24,7 @@
         { "slug": "historia-do-brasil", "nome": "História do Brasil", "aliases": ["História do Brasil", "Brasil Colonial", "Brasil Império", "Brasil Republicano"] },
         { "slug": "historia-da-africa", "nome": "História da África", "aliases": ["História da África", "África"] },
         { "slug": "geografia", "nome": "Geografia", "aliases": ["Geografia"] },
+        { "slug": "matematica", "nome": "Matemática", "aliases": ["Matemática"] },
         { "slug": "computacao", "nome": "Computação", "aliases": ["Computação", "Computação desplugada", "Pensamento computacional"] }
       ]
     }
