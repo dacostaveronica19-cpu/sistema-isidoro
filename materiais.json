@@ -64,7 +64,7 @@
     {
      "slug": "downloads",
      "nome": "Material gratuito",
-     "total": 19
+     "total": 20
     },
     {
      "slug": "recursos",
@@ -75,6 +75,21 @@
   }
  ],
  "materiais": [
+  {
+   "slug": "a-aventura-dos-numeros-na-vila-dos-bichinhos-atividade-de-matematica-para-o-1o-ano-ef01ma01",
+   "titulo": "A Aventura dos Números na Vila dos Bichinhos: Atividade de Matemática para o 1º Ano (EF01MA01)",
+   "descricao": "Ensinar os diferentes usos sociais e matemáticos dos números nos anos iniciais exige clareza visual, progressão cognitiva e enunciados que respeitem o…",
+   "tipo": "downloads",
+   "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/11/ilustracao.png",
+   "etapa": [],
+   "area": [],
+   "rotulos": [
+    "Anos Iniciais",
+    "Matemática",
+    "Material Didático"
+   ],
+   "data": "2026-11-26T17:10:22.000Z"
+  },
   {
    "slug": "brasil-contemporaneo-constituicao-de-1988-estado-brasileiro-e-cidadania",
    "titulo": "Brasil Contemporâneo: Constituição de 1988, Estado Brasileiro e Cidadania",
