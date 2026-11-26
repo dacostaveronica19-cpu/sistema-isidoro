@@ -3,14 +3,13 @@
 Gerado pela rotina de atualização. Mostra como os materiais do blog foram classificados em `config/filtros.json`.
 
 ## Materiais por filtro
-**Etapa ou modalidade**: EJA (6)
+**Etapa ou modalidade**: EJA (6), Anos Iniciais (1)
 
-**Área ou período**: História Antiga (5), História Moderna (5), História Contemporânea (4), História do Brasil (10), História da África (3), Geografia (2), Computação (1)
+**Área ou período**: História Antiga (5), História Moderna (5), História Contemporânea (4), História do Brasil (10), História da África (3), Geografia (2), Matemática (1), Computação (1)
 
 **Tipo de material**: Plano de aula (5), Material gratuito (20), Recurso especial (8)
 
-## Sem etapa ou modalidade (27)
-- A Aventura dos Números na Vila dos Bichinhos: Atividade de Matemática para o 1º Ano (EF01MA01) (material gratuito)
+## Sem etapa ou modalidade (26)
 - O enigma do Homem de Gelo: um jogo para aprender como a ciência chega a uma conclusão (material gratuito)
 - Por que ensinamos a escala cartográfica do jeito errado — e como consertar isso (plano de aula)
 - Avaliação Adaptada: Primeira Guerra Mundial para Alunos com Deficiência (material gratuito)
@@ -38,8 +37,7 @@ Gerado pela rotina de atualização. Mostra como os materiais do blog foram clas
 - Material Didático de História Antiga para Jovens: Estratégias e Recursos (material gratuito)
 - História da África e Cultura Afro-Brasileira (recurso especial)
 
-## Sem área ou período (9)
-- A Aventura dos Números na Vila dos Bichinhos: Atividade de Matemática para o 1º Ano (EF01MA01) (material gratuito)
+## Sem área ou período (8)
 - Materiais didáticos para EJA: estratégias contra a evasão (plano de aula)
 - O enigma do Homem de Gelo: um jogo para aprender como a ciência chega a uma conclusão (material gratuito)
 - Kit de atividades – mulheres na ciência (material gratuito)
@@ -68,7 +66,6 @@ Rótulos (categorias e tags) usados nos posts do portal que não correspondem a 
 - #HistóriaDoBrasi (1)
 - #RevoltaDosMalês (1)
 - #Rugendas (1)
-- Anos Iniciais (1)
 - AprendizagemParaTodos (1)
 - atividade adaptada (1)
 - Belle Époque (1)
@@ -97,7 +94,6 @@ Rótulos (categorias e tags) usados nos posts do portal que não correspondem a 
 - Jogo Histórico (1)
 - Kit pedagógico (1)
 - linha do tempo (1)
-- Matemática (1)
 - MaterialEducacional (1)
 - Mineração (1)
 - Niède Guidon (1)

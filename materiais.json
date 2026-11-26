@@ -8,6 +8,11 @@
      "slug": "eja",
      "nome": "EJA",
      "total": 6
+    },
+    {
+     "slug": "anos-iniciais",
+     "nome": "Anos Iniciais",
+     "total": 1
     }
    ]
   },
@@ -46,6 +51,11 @@
      "total": 2
     },
     {
+     "slug": "matematica",
+     "nome": "Matemática",
+     "total": 1
+    },
+    {
      "slug": "computacao",
      "nome": "Computação",
      "total": 1
@@ -81,8 +91,12 @@
    "descricao": "Ensinar os diferentes usos sociais e matemáticos dos números nos anos iniciais exige clareza visual, progressão cognitiva e enunciados que respeitem o…",
    "tipo": "downloads",
    "imagem": "https://academiaisidoro.wordpress.com/wp-content/uploads/2026/11/ilustracao.png",
-   "etapa": [],
-   "area": [],
+   "etapa": [
+    "anos-iniciais"
+   ],
+   "area": [
+    "matematica"
+   ],
    "rotulos": [
     "Anos Iniciais",
     "Matemática",
