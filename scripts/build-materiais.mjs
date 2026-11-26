@@ -115,12 +115,21 @@ const priceNumber = (price) => {
   const m = price.match(/(\d{1,3}(?:\.\d{3})*|\d+)(?:,(\d{2}))?/);
   return m ? `${m[1].replace(/\./g, '')}.${m[2] || '00'}` : '';
 };
+// Plataformas de venda reconhecidas: devolve o nome para o botão, ou '' se o endereço não for de uma delas.
+function platformOf(href) {
+  try {
+    const host = new URL(href).hostname;
+    if (/(^|\.)hotmart\.[a-z.]+$/.test(host)) return 'Hotmart';
+    if (/(^|\.)kiwify\.(com\.br|app)$/.test(host)) return 'Kiwify';
+  } catch { /* endereço inválido */ }
+  return '';
+}
 function buyUrl(rawHtml) {
   const re = /<a\b[^>]*\bhref\s*=\s*["']([^"']+)["']/gi;
   let m;
   while ((m = re.exec(rawHtml))) {
     const href = httpsUrl(decode(m[1]));
-    if (href && /(^|\.)hotmart\.[a-z.]+$/.test(new URL(href).hostname)) return href;
+    if (href && platformOf(href)) return href;
   }
   return '';
 }
@@ -271,8 +280,8 @@ function materialPage(m) {
 
   const buyBox = typeInfo.paid && (price || buy) ? `
 <div class="mb-8 rounded-xl border border-black/10 bg-white p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-<div>${price ? `<p class="text-2xl font-bold font-serif text-[#34322d]">${esc(price)}</p>` : ''}<p class="text-sm text-[#5e5e5b]">Material pago, vendido pela Hotmart.</p></div>
-${buy ? `<a href="${esc(buy)}" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center px-6 py-3 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">Comprar na Hotmart<span class="sr-only"> (abre em nova aba)</span></a>` : ''}
+<div>${price ? `<p class="text-2xl font-bold font-serif text-[#34322d]">${esc(price)}</p>` : ''}<p class="text-sm text-[#5e5e5b]">Material pago${buy ? `, vendido pela ${platformOf(buy)}` : ''}.</p></div>
+${buy ? `<a href="${esc(buy)}" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center px-6 py-3 bg-sage text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">Comprar na ${platformOf(buy)}<span class="sr-only"> (abre em nova aba)</span></a>` : ''}
 </div>` : '';
   const featured = httpsUrl(post.featured_image) ? `<div class="mb-8"><img src="${esc(httpsUrl(post.featured_image))}" alt="" loading="lazy" class="w-full max-h-[32rem] object-cover rounded-xl"></div>` : '';
   const facetLinks = FILTROS.grupos.flatMap((g) => (m.facets[g.id] || []).map((v) => `<a href="/materiais/${g.id}/${v}/" class="inline-block px-2 py-0.5 rounded-full bg-[#f1f1ef] text-xs text-[#5e5e5b] hover:bg-sage hover:text-white normal-case tracking-normal">${esc(valorPorSlug(g.id, v).nome)}</a>`));
